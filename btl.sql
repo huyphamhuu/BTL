@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS Product (
     ImageURL TEXT NOT NULL,
     CONSTRAINT chk_StockQuantity CHECK (StockQuantity >= 0),
 	CONSTRAINT fk_Product_ManufacturerID FOREIGN KEY (ManufacturerID) REFERENCES Manufacturer(ManufacturerID)
+    ON DELETE CASCADE 
 
 );
 -- Assuming the Material, Utility, and Color tables have already been created as shown previously
@@ -44,8 +45,10 @@ CREATE TABLE IF NOT EXISTS ProductMaterial (
     ProductID VARCHAR(10),
     MaterialID VARCHAR(10),
     PRIMARY KEY (ProductID, MaterialID),
-    CONSTRAINT fk_ProductMaterial_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+    CONSTRAINT fk_ProductMaterial_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE,
     CONSTRAINT fk_ProductMaterial_MaterialID FOREIGN KEY (MaterialID) REFERENCES Material(MaterialID)
+    ON DELETE CASCADE
 );
 
 -- Junction table for Product and Utility
@@ -53,8 +56,10 @@ CREATE TABLE IF NOT EXISTS ProductUtility (
     ProductID VARCHAR(10),
     UtilityID VARCHAR(10),
     PRIMARY KEY (ProductID, UtilityID),
-    CONSTRAINT fk_ProductUtility_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+    CONSTRAINT fk_ProductUtility_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE,
     CONSTRAINT fk_ProductUtility_UtilityID FOREIGN KEY (UtilityID) REFERENCES Utility(UtilityID)
+    ON DELETE CASCADE
 );
 
 -- Junction table for Product and Color
@@ -62,8 +67,10 @@ CREATE TABLE IF NOT EXISTS ProductColor (
     ProductID VARCHAR(10),
     ColorID VARCHAR(10),
     PRIMARY KEY (ProductID, ColorID),
-    CONSTRAINT fk_ProductColor_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+    CONSTRAINT fk_ProductColor_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE,
     CONSTRAINT fk_ProductColor_ColorID FOREIGN KEY (ColorID) REFERENCES Color(ColorID)
+    ON DELETE CASCADE
 );
 
 
@@ -73,6 +80,7 @@ CREATE TABLE IF NOT EXISTS Image (
     ProductID VARCHAR(10) NOT NULL,
     ImageURL TEXT NOT NULL,
     CONSTRAINT fk_Image_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 
@@ -84,6 +92,7 @@ CREATE TABLE IF NOT EXISTS Electronics (
     OperatingSystem VARCHAR(255) NOT NULL,
     Description TEXT NOT NULL,
     CONSTRAINT fk_Electronics_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- Refrigeration Appliances Table
@@ -94,6 +103,7 @@ CREATE TABLE IF NOT EXISTS RefrigerationAppliances (
     Technology VARCHAR(255) NOT NULL,
     Capacity DECIMAL(10,2) NOT NULL,
     CONSTRAINT fk_Refrigeration_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- Home Appliances Table
@@ -103,6 +113,7 @@ CREATE TABLE IF NOT EXISTS HomeAppliances (
     Functions VARCHAR(255) NOT NULL,
     Technology VARCHAR(255) NOT NULL,
     CONSTRAINT fk_HomeAppliances_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 -- Tài khoản
 CREATE TABLE IF NOT EXISTS Account (
@@ -120,6 +131,7 @@ CREATE TABLE IF NOT EXISTS Account (
 CREATE TABLE IF NOT EXISTS Customer(
     CustomerID VARCHAR(10) PRIMARY KEY,
     CONSTRAINT fk_Customer_AccountID FOREIGN KEY (CustomerID) REFERENCES Account(AccountID)
+    ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS Employee (
     EmployeeID VARCHAR(10) PRIMARY KEY,
@@ -127,6 +139,7 @@ CREATE TABLE IF NOT EXISTS Employee (
     Status VARCHAR(255) NOT NULL,
     SuperiorID VARCHAR(10),
     CONSTRAINT fk_Employee_SuperiorID FOREIGN KEY (SuperiorID) REFERENCES Employee(EmployeeID)
+    ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS Orders (
@@ -138,6 +151,7 @@ CREATE TABLE IF NOT EXISTS Orders (
     EmployeeID VARCHAR(10) NOT NULL,
     CONSTRAINT fk_EmployeeID FOREIGN KEY (EmployeeID) REFERENCES Account(AccountID),
     CONSTRAINT fk_Orders_EmployeeID FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
+  
 
 );
 -- Tạo bảng PurchaseOrder
@@ -146,6 +160,7 @@ CREATE TABLE IF NOT EXISTS PurchaseOrder (
     OrderDate DATE NOT NULL,
     TotalAmount DECIMAL(10,2) NOT NULL,
     CONSTRAINT fk_PurchaseOrder_Orders FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    ON DELETE CASCADE 
 );
 
 -- Tạo bảng SaleOrder
@@ -156,9 +171,9 @@ CREATE TABLE IF NOT EXISTS SaleOrder (
     TotalAmount DECIMAL(10,2) NOT NULL,
     Address VARCHAR(255) NOT NULL,
     
-    CONSTRAINT fk_SaleOrder_Orders FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    CONSTRAINT fk_SaleOrder_Orders FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    ON DELETE CASCADE,
 	CONSTRAINT fk_SaleOrder_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
-
     
 );
 
@@ -177,8 +192,10 @@ CREATE TABLE IF NOT EXISTS OrderDetails (
     OrderID VARCHAR(10) NOT NULL,
     ProductID VARCHAR(10) NOT NULL,
     Quantity INT NOT NULL,
-    CONSTRAINT fk_OrderDetails_OrderID FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    CONSTRAINT fk_OrderDetails_OrderID FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    ON DELETE CASCADE,
     CONSTRAINT fk_OrderDetails_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- The remaining tables like Television, Phone, Laptop, etc., should follow the same pattern for their ID fields.
@@ -191,6 +208,7 @@ CREATE TABLE IF NOT EXISTS Television (
     SoundTech VARCHAR(255) NOT NULL,
     ConnectivityTech TEXT NOT NULL,
     CONSTRAINT fk_Television_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- And so on for the other tables...
@@ -204,6 +222,7 @@ CREATE TABLE IF NOT EXISTS Phone (
     ConnectivitySupport TEXT NOT NULL,
     CameraSpecs TEXT NOT NULL,
     CONSTRAINT fk_Phone_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 
@@ -217,6 +236,7 @@ CREATE TABLE IF NOT EXISTS Laptop (
     SoundTech VARCHAR(255) NOT NULL,
     GraphicsCard VARCHAR(255) NOT NULL,
     CONSTRAINT fk_Laptop_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- Refrigerator Table
@@ -226,6 +246,7 @@ CREATE TABLE IF NOT EXISTS Refrigerator (
     Capacity DECIMAL(10,2) NOT NULL,
     PreservationTech TEXT NOT NULL,
     CONSTRAINT fk_Refrigerator_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- AirConditioner Table
@@ -236,6 +257,7 @@ CREATE TABLE IF NOT EXISTS AirConditioner (
     AirFilteringTech TEXT NOT NULL,
     GasType VARCHAR(255) NOT NULL,
     CONSTRAINT fk_AirConditioner_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- WashingMachine Table
@@ -245,6 +267,7 @@ CREATE TABLE IF NOT EXISTS WashingMachine (
     MotorType VARCHAR(255) NOT NULL,
     WashingTech TEXT NOT NULL,
     CONSTRAINT fk_WashingMachine_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- RiceCooker Table
@@ -254,6 +277,7 @@ CREATE TABLE IF NOT EXISTS RiceCooker (
     CookingTech TEXT NOT NULL,
     CookingFunction TEXT NOT NULL,
     CONSTRAINT fk_RiceCooker_ProductID FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    ON DELETE CASCADE
 );
 
 -- PurchaseOrder Table
@@ -716,7 +740,7 @@ DELIMITER //
 CREATE TRIGGER UpdateStockOnOrderDetailsInsert AFTER INSERT ON OrderDetails
 FOR EACH ROW
 BEGIN
-    DECLARE OrderTypePrefix VARCHAR(3);
+    DECLARE OrderTypePrefix VARCHAR(10);
 
     -- Determine the order type based on OrderID prefix
     SELECT CASE 
