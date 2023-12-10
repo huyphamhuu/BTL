@@ -683,4 +683,80 @@ INSERT INTO OrderDetails (OrderDetailsID, OrderID, ProductID, Quantity) VALUES
 
 -- ...Continue with similar INSERT statements for the Television, Phone, Laptop, Refrigerator, AirConditioner, WashingMachine, RiceCooker, PurchaseOrder, and SaleOrder tables.
 
+-- Trigger for updating stock on OrderDetails insert
+
+-- Trigger for updating stock on OrderDetails insert
+DELIMITER //
+CREATE TRIGGER UpdateStockOnOrderDetailsInsert AFTER INSERT ON OrderDetails
+FOR EACH ROW
+BEGIN
+    DECLARE OrderTypePrefix VARCHAR(4);
+
+    -- Determine the order type based on OrderID prefix
+    SELECT CASE 
+        WHEN LEFT(NEW.OrderID, 4) = 'ORDP' THEN 'Import' -- Đơn nhập
+        WHEN LEFT(NEW.OrderID, 4) = 'ORDS' THEN 'Sale'   -- Đơn bán
+        ELSE 'Unknown'
+    END INTO OrderTypePrefix;
+
+    -- Check if Quantity exceeds StockQuantity for any product
+    IF OrderTypePrefix = 'Sale' AND EXISTS (
+        SELECT 1
+        FROM Product p
+        WHERE NEW.ProductID = p.ProductID AND NEW.Quantity > p.StockQuantity
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Quantity exceeds StockQuantity for one or more products. Cannot proceed with the update.';
+    END IF;
+
+    -- Update stock for products in OrderDetails based on order type
+    UPDATE Product p
+    SET p.StockQuantity = CASE 
+                            WHEN OrderTypePrefix = 'Sale' THEN p.StockQuantity - NEW.Quantity
+                            WHEN OrderTypePrefix = 'Import' THEN p.StockQuantity + NEW.Quantity
+                            ELSE p.StockQuantity
+                        END
+    WHERE p.ProductID = NEW.ProductID;
+END; //
+DELIMITER ;
+
+-- Trigger for updating TotalAmount on PurchaseOrder insert, update, delete
+DELIMITER //
+CREATE TRIGGER UpdatePurchaseOrderTotalPrice AFTER INSERT, UPDATE, DELETE ON OrderDetails
+FOR EACH ROW
+BEGIN
+    -- Check if the trigger operation is related to a purchase order ('ORDP')
+    IF EXISTS (SELECT 1 FROM PurchaseOrder p WHERE LEFT(NEW.OrderID, 4) = 'ORDP') THEN
+        -- Update TotalAmount for purchase orders
+        UPDATE PurchaseOrder p
+        SET p.TotalAmount = (
+            SELECT SUM(pr.EntryPrice * NEW.Quantity)
+            FROM OrderDetails i
+            JOIN Product pr ON NEW.ProductID = pr.ProductID
+            WHERE i.OrderID = NEW.OrderID
+        )
+        WHERE p.OrderID = NEW.OrderID;
+    END IF;
+END; //
+DELIMITER ;
+
+-- Trigger for updating TotalAmount on SaleOrder insert, update, delete
+DELIMITER //
+CREATE TRIGGER UpdateSaleOrderTotalPrice AFTER INSERT, UPDATE, DELETE ON OrderDetails
+FOR EACH ROW
+BEGIN
+    -- Check if the trigger operation is related to a sale order ('ORDS')
+    IF EXISTS (SELECT 1 FROM SaleOrder s WHERE LEFT(NEW.OrderID, 4) = 'ORDS') THEN
+        -- Update TotalAmount for sale orders
+        UPDATE SaleOrder s
+        SET s.TotalAmount = (
+            SELECT SUM(pr.SalePrice * NEW.Quantity)
+            FROM OrderDetails i
+            JOIN Product pr ON NEW.ProductID = pr.ProductID
+            WHERE i.OrderID = NEW.OrderID
+        )
+        WHERE s.OrderID = NEW.OrderID;
+    END IF;
+END; //
+DELIMITER ;
 
