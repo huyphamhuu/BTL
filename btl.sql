@@ -313,172 +313,187 @@ INSERT INTO Color (ColorID, ColorName) VALUES
 
 INSERT INTO Manufacturer (ManufacturerID, Name, Origin) VALUES
 ('MAN001', 'Nhà Sản Xuất A', 'Việt Nam'),
-('MAN002', 'Nhà Sản Xuất B', 'Việt Nam');
+('MAN002', 'Nhà Sản Xuất B', 'Nhật Bản'),
+('MAN003', 'Nhà Sản Xuất C', 'Hàn Quốc'),
+('MAN004', 'Nhà Sản Xuất D', 'Thái Lan'),
+('MAN005', 'Nhà Sản Xuất E', 'Nhật Bản'),
+('MAN006', 'Nhà Sản Xuất F', 'Hàn Quốc');
+
+
 INSERT INTO Product (ProductID, ManufacturerID, EntryPrice, SalePrice, ProductName, Weight, Size, ManufacturingDate, WarrantyPeriod, PowerConsumption, Description, StockQuantity, ImageURL) VALUES
-('PRD1001', 'MAN001', 200.00, 300.00, 'Smartphone Alpha', 0.150, '5.5 inches', '2023-01-01', 12, 10.0, 'An advanced smartphone with an excellent camera.', 10 , 'http://example.com/images/smartphone_alpha.jpg'),
-('PRD1002', 'MAN002', 150.00, 250.00, 'Smartphone Beta', 0.160, '6.1 inches', '2023-01-02', 12, 10.0, 'A budget-friendly smartphone with great battery life.', 15 , 'http://example.com/images/smartphone_beta.jpg'),
-('PRD1003', 'MAN001', 250.00, 450.00, 'Smartphone Delta', 0.160, '6.2 inches', '2023-01-03', 12, 10.0, 'Mid-range smartphone with fast charging.', 10 , 'http://example.com/images/smartphone_delta.jpg'),
-('PRD1004', 'MAN001', 300.00, 550.00, 'Smartphone Epsilon', 0.180, '6.5 inches', '2023-01-04', 24, 10.0, 'High-end smartphone with water resistance.', 15 ,'http://example.com/images/smartphone_epsilon.jpg'),
-('PRD1005', 'MAN002', 400.00, 650.00, 'Smartphone Zeta', 0.200, '6.7 inches', '2023-01-05', 24, 10.0, 'Flagship smartphone with the best camera.', 10,  'http://example.com/images/smartphone_zeta.jpg'),
-('PRD1006', 'MAN001', 500.00, 800.00, 'Gaming Laptop', 2.5, '15 inches', '2023-01-01', 24, 150, 'High performance gaming laptop with best in class graphics.', 5, 'http://example.com/images/laptop_gaming.jpg'),
-('PRD1007', 'MAN002', 300.00, 500.00, 'Business Laptop', 2.0, '14 inches', '2023-01-01', 24, 100, 'A reliable business laptop with extended battery life.', 5, 'http://example.com/images/laptop_business.jpg'),
-('PRD1008', 'MAN001', 550.00, 900.00, 'Ultra HD Laptop', 2.2, '17 inches', '2023-01-01', 36, 180, '4K UHD laptop with immersive audio and a premium build.', 30, 'http://example.com/images/laptop_ultrahd.jpg'),
-('PRD1009', 'MAN002', 400.00, 700.00, 'Convertible Laptop', 1.5, '13 inches', '2023-01-01', 24, 120, 'Convertible laptop with touch screen and versatile design.', 40, 'http://example.com/images/laptop_convertible.jpg'),
-('PRD1010', 'MAN001', 450.00, 750.00, 'Compact Laptop', 1.8, '11 inches', '2023-01-01', 24, 90, 'Compact laptop for on-the-go productivity and entertainment.', 50, 'http://example.com/images/laptop_compact.jpg'),
-('PRD1011', 'MAN001', 400.00, 600.00, 'LED TV 40 inch', 15.0, '40 inches', '2023-01-01', 24, 100, '40 inch LED TV with Full HD resolution.', 30, 'http://example.com/images/ledtv40.jpg'),
-('PRD1012', 'MAN002', 500.00, 800.00, 'Smart TV 50 inch', 20.0, '50 inches', '2023-01-01', 36, 150, '50 inch Smart TV with 4K resolution and HDR support.', 25, 'http://example.com/images/smarttv50.jpg'),
-('PRD1013', 'MAN002', 550.00, 900.00, 'Curved TV 55 inch', 22.0, '55 inches', '2023-01-02', 36, 180, '55 inch Curved TV with Ultra HD resolution.', 20, 'http://example.com/images/curvedtv55.jpg'),
-('PRD1014', 'MAN001', 650.00, 1200.00, 'OLED TV 65 inch', 25.0, '65 inches', '2023-01-02', 48, 200, '65 inch OLED TV with 4K resolution and high dynamic range.', 15, 'http://example.com/images/oledtv65.jpg'),
-('PRD1015', 'MAN001', 350.00, 550.00, 'HD TV 32 inch', 10.0, '32 inches', '2023-01-02', 24, 85, '32 inch HD TV perfect for small rooms and apartments.', 40, 'http://example.com/images/hdtv32.jpg'),
-('PRD1016', 'MAN001', 300.00, 500.00, 'Compact Air Conditioner', 25.0, 'Medium', '2023-01-01', 24, 150, 'Energy-efficient compact air conditioner, ideal for small rooms.', 40, 'http://example.com/images/compact_ac.jpg'),
-('PRD1017', 'MAN002', 400.00, 700.00, 'Smart Air Conditioner', 35.0, 'Large', '2023-01-02', 36, 200, 'Smart air conditioner with Wi-Fi connectivity and remote control.', 30, 'http://example.com/images/smart_ac.jpg'),
-('PRD1018', 'MAN002', 450.00, 650.00, 'High-Capacity Air Conditioner', 40.0, 'Large', '2023-01-03', 48, 250, 'High-capacity air conditioner, suitable for large spaces.', 20, 'http://example.com/images/high_capacity_ac.jpg'),
-('PRD1019', 'MAN001', 350.00, 550.00, 'Portable Air Conditioner', 15.0, 'Small', '2023-01-03', 24, 100, 'Portable air conditioner, easy to move and install.', 35, 'http://example.com/images/portable_ac.jpg'),
-('PRD1020', 'MAN002', 500.00, 800.00, 'Energy-Saving Air Conditioner', 30.0, 'Medium', '2023-01-03', 36, 180, 'Energy-saving air conditioner with eco-friendly technology.', 25, 'http://example.com/images/energy_saving_ac.jpg'),
-('PRD1021', 'MAN001', 600.00, 1000.00, 'Double Door Refrigerator', 60.0, 'Large', '2023-01-01', 36, 250, 'Double door refrigerator with advanced cooling technology.', 15, 'http://example.com/images/double_door_fridge.jpg'),
-('PRD1022', 'MAN002', 500.00, 900.00, 'Energy-Saving Refrigerator', 55.0, 'Medium', '2023-01-02', 48, 200, 'Energy-saving refrigerator with eco-friendly design.', 20, 'http://example.com/images/energy_saving_fridge.jpg'),
-('PRD1023', 'MAN001', 550.00, 850.00, 'Smart Refrigerator', 50.0, 'Medium', '2023-01-03', 36, 180, 'Smart refrigerator with touch screen panel and Wi-Fi connectivity.', 25, 'http://example.com/images/smart_fridge.jpg'),
-('PRD1024', 'MAN002', 700.00, 1200.00, 'Side-by-Side Refrigerator', 75.0, 'Extra Large', '2023-01-04', 48, 300, 'Side-by-side refrigerator with water dispenser and ice maker.', 10, 'http://example.com/images/sidebyside_fridge.jpg'),
-('PRD1025', 'MAN001', 450.00, 700.00, 'Compact Refrigerator', 30.0, 'Small', '2023-01-05', 24, 150, 'Compact refrigerator, ideal for small spaces or as a secondary fridge.', 30, 'http://example.com/images/compact_fridge.jpg'),
-('PRD1026', 'MAN003', 400.00, 600.00, 'Front Load Washer', 60.0, 'Large', '2023-01-06', 24, 250, 'Front load washing machine with various wash programs and energy-efficient operation.', 20, 'http://example.com/images/frontload_washer.jpg'),
-('PRD1027', 'MAN004', 350.00, 500.00, 'Top Load Washer', 55.0, 'Medium', '2023-01-07', 24, 200, 'Top load washing machine with agitator for powerful cleaning performance.', 15, 'http://example.com/images/topload_washer.jpg'),
-('PRD1028', 'MAN003', 600.00, 900.00, 'Smart Washer-Dryer Combo', 70.0, 'Extra Large', '2023-01-08', 36, 300, 'Smart washer-dryer combo with app control and multiple drying options.', 10, 'http://example.com/images/smart_washer_dryer.jpg'),
-('PRD1029', 'MAN005', 450.00, 700.00, 'Compact Portable Washer', 35.0, 'Small', '2023-01-09', 24, 150, 'Compact and portable washing machine, ideal for small spaces or travel.', 25, 'http://example.com/images/portable_washer.jpg'),
-('PRD1030', 'MAN003', 550.00, 800.00, 'High-Efficiency Washer', 65.0, 'Large', '2023-01-10', 24, 280, 'High-efficiency washing machine with large capacity and quick wash cycles.', 18, 'http://example.com/images/high_efficiency_washer.jpg'),
-('PRD1031', 'MAN003', 80.00, 120.00, 'Basic Rice Cooker', 4.0, 'Small', '2023-01-11', 12, 300, 'Simple and reliable rice cooker for everyday use.', 30, 'http://example.com/images/basic_rice_cooker.jpg'),
-('PRD1032', 'MAN004', 120.00, 180.00, 'Multi-Function Rice Cooker', 5.5, 'Medium', '2023-01-12', 18, 400, 'Versatile rice cooker with multiple cooking functions and keep-warm feature.', 25, 'http://example.com/images/multi_function_rice_cooker.jpg'),
-('PRD1033', 'MAN003', 150.00, 220.00, 'Smart Rice Cooker', 6.0, 'Medium', '2023-01-13', 24, 350, 'Smart rice cooker with app control and customizable cooking settings.', 15, 'http://example.com/images/smart_rice_cooker.jpg'),
-('PRD1034', 'MAN005', 100.00, 150.00, 'Compact Rice Cooker', 3.5, 'Small', '2023-01-14', 12, 250, 'Compact and lightweight rice cooker, suitable for small kitchens or travel.', 20, 'http://example.com/images/compact_rice_cooker.jpg'),
-('PRD1035', 'MAN003', 130.00, 200.00, 'Advanced Rice Cooker', 5.0, 'Medium', '2023-01-15', 24, 380, 'Advanced rice cooker with fuzzy logic technology for precise cooking results.', 18, 'http://example.com/images/advanced_rice_cooker.jpg');
+-- Smartphones
+('PHN001', 'MAN001', 200.00, 300.00, 'Smartphone Alpha', 0.150, '5.5 inches', '2023-01-01', 12, 10.0, 'An advanced smartphone with an excellent camera.', 10, 'http://example.com/images/smartphone_alpha.jpg'),
+('PHN002', 'MAN002', 150.00, 250.00, 'Smartphone Beta', 0.160, '6.1 inches', '2023-01-02', 12, 10.0, 'A budget-friendly smartphone with great battery life.', 15, 'http://example.com/images/smartphone_beta.jpg'),
+('PHN003', 'MAN001', 250.00, 450.00, 'Smartphone Delta', 0.160, '6.2 inches', '2023-01-03', 12, 10.0, 'Mid-range smartphone with fast charging.', 10, 'http://example.com/images/smartphone_delta.jpg'),
+('PHN004', 'MAN001', 300.00, 550.00, 'Smartphone Epsilon', 0.180, '6.5 inches', '2023-01-04', 24, 10.0, 'High-end smartphone with water resistance.', 15, 'http://example.com/images/smartphone_epsilon.jpg'),
+('PHN005', 'MAN002', 400.00, 650.00, 'Smartphone Zeta', 0.200, '6.7 inches', '2023-01-05', 24, 10.0, 'Flagship smartphone with the best camera.', 10, 'http://example.com/images/smartphone_zeta.jpg'),
+-- Laptops
+('LAP001', 'MAN001', 500.00, 800.00, 'Gaming Laptop', 2.5, '15 inches', '2023-01-01', 24, 150, 'High performance gaming laptop with best in class graphics.', 5, 'http://example.com/images/laptop_gaming.jpg'),
+('LAP002', 'MAN002', 300.00, 500.00, 'Business Laptop', 2.0, '14 inches', '2023-01-01', 24, 100, 'A reliable business laptop with extended battery life.', 5, 'http://example.com/images/laptop_business.jpg'),
+('LAP003', 'MAN001', 550.00, 900.00, 'Ultra HD Laptop', 2.2, '17 inches', '2023-01-01', 36, 180, '4K UHD laptop with immersive audio and a premium build.', 30, 'http://example.com/images/laptop_ultrahd.jpg'),
+('LAP004', 'MAN002', 400.00, 700.00, 'Convertible Laptop', 1.5, '13 inches', '2023-01-01', 24, 120, 'Convertible laptop with touch screen and versatile design.', 40, 'http://example.com/images/laptop_convertible.jpg'),
+('LAP005', 'MAN001', 450.00, 750.00, 'Compact Laptop', 1.8, '11 inches', '2023-01-01', 24, 90, 'Compact laptop for on-the-go productivity and entertainment.', 50, 'http://example.com/images/laptop_compact.jpg'),
+-- Televisions
+('TLV001', 'MAN001', 400.00, 600.00, 'LED TV 40 inch', 15.0, '40 inches', '2023-01-01', 24, 100, '40 inch LED TV with Full HD resolution.', 30, 'http://example.com/images/ledtv40.jpg'),
+('TLV002', 'MAN002', 500.00, 800.00, 'Smart TV 50 inch', 20.0, '50 inches', '2023-01-01', 36, 150, '50 inch Smart TV with 4K resolution and HDR support.', 25, 'http://example.com/images/smarttv50.jpg'),
+('TLV003', 'MAN002', 550.00, 900.00, 'Curved TV 55 inch', 22.0, '55 inches', '2023-01-02', 36, 180, '55 inch Curved TV with Ultra HD resolution.', 20, 'http://example.com/images/curvedtv55.jpg'),
+('TLV004', 'MAN001', 650.00, 1200.00, 'OLED TV 65 inch', 25.0, '65 inches', '2023-01-02', 48, 200, '65 inch OLED TV with 4K resolution and high dynamic range.', 15, 'http://example.com/images/oledtv65.jpg'),
+('TLV005', 'MAN001', 350.00, 550.00, 'HD TV 32 inch', 10.0, '32 inches', '2023-01-02', 24, 85, '32 inch HD TV perfect for small rooms and apartments.', 40, 'http://example.com/images/hdtv32.jpg'),
+-- Air Conditioners
+('ACN001', 'MAN001', 300.00, 500.00, 'Compact Air Conditioner', 25.0, 'Medium', '2023-01-01', 24, 150, 'Energy-efficient compact air conditioner, ideal for small rooms.', 40, 'http://example.com/images/compact_ac.jpg'),
+('ACN002', 'MAN002', 400.00, 700.00, 'Smart Air Conditioner', 35.0, 'Large', '2023-01-02', 36, 200, 'Smart air conditioner with Wi-Fi connectivity and remote control.', 30, 'http://example.com/images/smart_ac.jpg'),
+('ACN003', 'MAN002', 450.00, 650.00, 'High-Capacity Air Conditioner', 40.0, 'Large', '2023-01-03', 48, 250, 'High-capacity air conditioner, suitable for large spaces.', 20, 'http://example.com/images/high_capacity_ac.jpg'),
+('ACN004', 'MAN001', 350.00, 550.00, 'Portable Air Conditioner', 15.0, 'Small', '2023-01-03', 24, 100, 'Portable air conditioner, easy to move and install.', 35, 'http://example.com/images/portable_ac.jpg'),
+('ACN005', 'MAN002', 500.00, 800.00, 'Energy-Saving Air Conditioner', 30.0, 'Medium', '2023-01-03', 36, 180, 'Energy-saving air conditioner with eco-friendly technology.', 25, 'http://example.com/images/energy_saving_ac.jpg'),
+-- Refrigerators
+('FRG001', 'MAN001', 600.00, 1000.00, 'Double Door Refrigerator', 60.0, 'Large', '2023-01-01', 36, 250, 'Double door refrigerator with advanced cooling technology.', 15, 'http://example.com/images/double_door_fridge.jpg'),
+('FRG002', 'MAN002', 500.00, 900.00, 'Energy-Saving Refrigerator', 55.0, 'Medium', '2023-01-02', 48, 200, 'Energy-saving refrigerator with eco-friendly design.', 20, 'http://example.com/images/energy_saving_fridge.jpg'),
+('FRG003', 'MAN001', 550.00, 850.00, 'Smart Refrigerator', 50.0, 'Medium', '2023-01-03', 36, 180, 'Smart refrigerator with touch screen panel and Wi-Fi connectivity.', 25, 'http://example.com/images/smart_fridge.jpg'),
+('FRG004', 'MAN002', 700.00, 1200.00, 'Side-by-Side Refrigerator', 75.0, 'Extra Large', '2023-01-04', 48, 300, 'Side-by-side refrigerator with water dispenser and ice maker.', 10, 'http://example.com/images/sidebyside_fridge.jpg'),
+('FRG005', 'MAN001', 450.00, 700.00, 'Compact Refrigerator', 30.0, 'Small', '2023-01-05', 24, 150, 'Compact refrigerator, ideal for small spaces or as a secondary fridge.', 30, 'http://example.com/images/compact_fridge.jpg'),
+-- Washing Machines
+('WSH001', 'MAN003', 400.00, 600.00, 'Front Load Washer', 60.0, 'Large', '2023-01-06', 24, 250, 'Front load washing machine with various wash programs and energy-efficient operation.', 20, 'http://example.com/images/frontload_washer.jpg'),
+('WSH002', 'MAN004', 350.00, 500.00, 'Top Load Washer', 55.0, 'Medium', '2023-01-07', 24, 200, 'Top load washing machine with agitator for powerful cleaning performance.', 15, 'http://example.com/images/topload_washer.jpg'),
+('WSH003', 'MAN003', 600.00, 900.00, 'Smart Washer-Dryer Combo', 70.0, 'Extra Large', '2023-01-08', 36, 300, 'Smart washer-dryer combo with app control and multiple drying options.', 10, 'http://example.com/images/smart_washer_dryer.jpg'),
+('WSH004', 'MAN005', 450.00, 700.00, 'Compact Portable Washer', 35.0, 'Small', '2023-01-09', 24, 150, 'Compact and portable washing machine, ideal for small spaces or travel.', 25, 'http://example.com/images/portable_washer.jpg'),
+('WSH005', 'MAN003', 550.00, 800.00, 'High-Efficiency Washer', 65.0, 'Large', '2023-01-10', 24, 280, 'High-efficiency washing machine with large capacity and quick wash cycles.', 18, 'http://example.com/images/high_efficiency_washer.jpg'),
+-- Rice Cookers
+('RCK001', 'MAN003', 80.00, 120.00, 'Basic Rice Cooker', 4.0, 'Small', '2023-01-11', 12, 300, 'Simple and reliable rice cooker for everyday use.', 30, 'http://example.com/images/basic_rice_cooker.jpg'),
+('RCK002', 'MAN004', 120.00, 180.00, 'Multi-Function Rice Cooker', 5.5, 'Medium', '2023-01-12', 18, 400, 'Versatile rice cooker with multiple cooking functions and keep-warm feature.', 25, 'http://example.com/images/multi_function_rice_cooker.jpg'),
+('RCK003', 'MAN003', 150.00, 220.00, 'Smart Rice Cooker', 6.0, 'Medium', '2023-01-13', 24, 350, 'Smart rice cooker with app control and customizable cooking settings.', 15, 'http://example.com/images/smart_rice_cooker.jpg'),
+('RCK004', 'MAN005', 100.00, 150.00, 'Compact Rice Cooker', 3.5, 'Small', '2023-01-14', 12, 250, 'Compact and lightweight rice cooker, suitable for small kitchens or travel.', 20, 'http://example.com/images/compact_rice_cooker.jpg'),
+('RCK005', 'MAN003', 130.00, 200.00, 'Advanced Rice Cooker', 5.0, 'Medium', '2023-01-15', 24, 380, 'Advanced rice cooker with fuzzy logic technology for precise cooking results.', 18, 'http://example.com/images/advanced_rice_cooker.jpg');
 
 
 INSERT INTO RefrigerationAppliances (ProductID, RefrigerationType, EnergyConsumptionLevel, Technology, Capacity) VALUES
-('PRD1016', 'Split AC', 'A+', 'Inverter', 1.5),
-('PRD1017', 'Window AC', 'A', 'Standard', 2.0),
-('PRD1018', 'Split AC', 'A+', 'Inverter', 1.8),
-('PRD1019', 'Split AC', 'A', 'Smart Inverter', 2.0),
-('PRD1020', 'Window AC', 'B+', 'Standard', 1.2),
-('PRD1021', 'Double Door', 'A+', 'Frost Free', 500),
-('PRD1022', 'Single Door', 'A', 'Standard', 350),
-('PRD1023', 'Smart Fridge', 'A++', 'Frost Free, IoT Enabled', 400),
-('PRD1024', 'Side-by-Side', 'A+', 'Frost Free, Water Dispenser', 700),
-('PRD1025', 'Compact', 'B+', 'Standard, Energy Efficient', 200);
+('ACN001', 'Split AC', 'A+', 'Inverter', 1.5),
+('ACN002', 'Window AC', 'A', 'Standard', 2.0),
+('ACN003', 'Split AC', 'A+', 'Inverter', 1.8),
+('ACN004', 'Split AC', 'A', 'Smart Inverter', 2.0),
+('ACN005', 'Window AC', 'B+', 'Standard', 1.2),
+('FRG001', 'Double Door', 'A+', 'Frost Free', 500),
+('FRG002', 'Single Door', 'A', 'Standard', 350),
+('FRG003', 'Smart Fridge', 'A++', 'Frost Free, IoT Enabled', 400),
+('FRG004', 'Side-by-Side', 'A+', 'Frost Free, Water Dispenser', 700),
+('FRG005', 'Compact', 'B+', 'Standard, Energy Efficient', 200);
 
 
 
 INSERT INTO Electronics ( ProductID, ScreenSpecs, OperatingSystem, Description) VALUES
-( 'PRD1001', '1080x1920 pixels Full HD', 'Android 11', 'Smartphone Alpha with 5.5-inch Full HD display and Android 11.'),
-( 'PRD1002', '720x1280 pixels HD', 'Android 11', 'Smartphone Beta with 6.1-inch HD display and Android 11.'),
-( 'PRD1003', '2340x1080 pixels Full HD+', 'Android 11', 'Smartphone Delta with 6.2-inch Full HD+ display and Android 11.'),
-( 'PRD1004', '2640x1200 pixels Full HD+', 'Android 11', 'Smartphone Epsilon with 6.5-inch Full HD+ display and Android 11.'),
-( 'PRD1005', '3040x1440 pixels Quad HD+', 'Android 11', 'Smartphone Zeta with 6.7-inch Quad HD+ display and Android 11.'),
-('PRD1006', '15.6-inch 1920x1080', 'Windows 10', 'High-end gaming laptop with RGB keyboard and high-refresh-rate display.'),
-('PRD1007', '14-inch 1920x1080', 'Windows 10', 'Business laptop with secure biometric login and all-day battery life.'),
-('PRD1008', '17-inch 3840x2160', 'Windows 10', 'Ultra HD Laptop with vibrant colors and exceptional clarity.'),
-('PRD1009', '13.3-inch 1920x1080 touch screen', 'Windows 10', 'Convertible Laptop that doubles as a tablet.'),
-('PRD1010', '11.6-inch 1366x768', 'Windows 10', 'Compact Laptop with long battery life and lightweight design.'),
-('PRD1011', '40-inch Full HD LED', 'None', '40-inch LED TV with sharp and vibrant picture quality.'),
-('PRD1012', '50-inch 4K UHD Smart', 'Android TV', '50-inch Smart TV with 4K resolution and smart features.'),
-('PRD1013', '55-inch Ultra HD Curved', 'None', '55-inch Curved TV with immersive viewing experience.'),
-('PRD1014', '65-inch 4K OLED', 'None', '65-inch OLED TV offering deep blacks and rich colors.'),
-('PRD1015', '32-inch HD Ready', 'None', '32-inch HD TV, perfect for small spaces and budget-friendly.');
+('PHN001', '1080x1920 pixels Full HD', 'Android 11', 'Smartphone Alpha with 5.5-inch Full HD display and Android 11.'),
+('PHN002', '720x1280 pixels HD', 'Android 11', 'Smartphone Beta with 6.1-inch HD display and Android 11.'),
+('PHN003', '2340x1080 pixels Full HD+', 'Android 11', 'Smartphone Delta with 6.2-inch Full HD+ display and Android 11.'),
+('PHN004', '2640x1200 pixels Full HD+', 'Android 11', 'Smartphone Epsilon with 6.5-inch Full HD+ display and Android 11.'),
+('PHN005', '3040x1440 pixels Quad HD+', 'Android 11', 'Smartphone Zeta with 6.7-inch Quad HD+ display and Android 11.'),
+('LAP001', '15.6-inch 1920x1080', 'Windows 10', 'High-end gaming laptop with RGB keyboard and high-refresh-rate display.'),
+('LAP002', '14-inch 1920x1080', 'Windows 10', 'Business laptop with secure biometric login and all-day battery life.'),
+('LAP003', '17-inch 3840x2160', 'Windows 10', 'Ultra HD Laptop with vibrant colors and exceptional clarity.'),
+('LAP004', '13.3-inch 1920x1080 touch screen', 'Windows 10', 'Convertible Laptop that doubles as a tablet.'),
+('LAP005', '11.6-inch 1366x768', 'Windows 10', 'Compact Laptop with long battery life and lightweight design.'),
+('TLV001', '40-inch Full HD LED', 'None', '40-inch LED TV with sharp and vibrant picture quality.'),
+('TLV002', '50-inch 4K UHD Smart', 'Android TV', '50-inch Smart TV with 4K resolution and smart features.'),
+('TLV003', '55-inch Ultra HD Curved', 'None', '55-inch Curved TV with immersive viewing experience.'),
+('TLV004', '65-inch 4K OLED', 'None', '65-inch OLED TV offering deep blacks and rich colors.'),
+('TLV005', '32-inch HD Ready', 'None', '32-inch HD TV, perfect for small spaces and budget-friendly.');
 
 
 INSERT INTO HomeAppliances (ProductID, Type, Functions, Technology) VALUES
-('PRD1026', 'Front Load Washer', 'Front Load, Quick Wash, Eco Wash', 'Inverter Technology'),
-('PRD1027', 'Washing Machine', 'Top Load, Gentle Wash, Spin Dry', 'Conventional'),
-('PRD1028', 'Portable Washer', 'Washer-Dryer Combo, Steam Wash, Anti-Allergen', 'Smart Inverter'),
-('PRD1029', 'Washing Machine', 'Portable Washer, Single Tub, Compact Design', 'Standard'),
-('PRD1030', 'Washing Machine', 'Front Load, High Efficiency, Multiple Wash Programs', 'Inverter Technology'),
-('PRD1031', 'Basic Rice Cooker', 'Basic Cook, Keep Warm', 'Standard'),
-('PRD1032', 'Rice Cooker', 'Multiple Cooking Modes, Keep Warm, Timer', 'Fuzzy Logic'),
-('PRD1033', 'Compact Rice Cooker', 'Smart Cooking, App Control, Customizable Settings', 'IoT Enabled'),
-('PRD1034', 'Rice Cooker', 'Compact, Travel-Friendly, Quick Cook', 'Standard'),
-('PRD1035', 'Advanced Rice Cooker', 'Advanced Cooking, Delay Timer, Multi-Function', 'Fuzzy Logic');
+('WSH001', 'Front Load Washer', 'Front Load, Quick Wash, Eco Wash', 'Inverter Technology'),
+('WSH002', 'Washing Machine', 'Top Load, Gentle Wash, Spin Dry', 'Conventional'),
+('WSH003', 'Portable Washer', 'Washer-Dryer Combo, Steam Wash, Anti-Allergen', 'Smart Inverter'),
+('WSH004', 'Washing Machine', 'Portable Washer, Single Tub, Compact Design', 'Standard'),
+('WSH005', 'Washing Machine', 'Front Load, High Efficiency, Multiple Wash Programs', 'Inverter Technology'),
+('RCK001', 'Basic Rice Cooker', 'Basic Cook, Keep Warm', 'Standard'),
+('RCK002', 'Rice Cooker', 'Multiple Cooking Modes, Keep Warm, Timer', 'Fuzzy Logic'),
+('RCK003', 'Compact Rice Cooker', 'Smart Cooking, App Control, Customizable Settings', 'IoT Enabled'),
+('RCK004', 'Rice Cooker', 'Compact, Travel-Friendly, Quick Cook', 'Standard'),
+('RCK005', 'Advanced Rice Cooker', 'Advanced Cooking, Delay Timer, Multi-Function', 'Fuzzy Logic');
 
 INSERT INTO Television (ProductID, ImageTech, SoundTech, ConnectivityTech) VALUES
-('PRD1011', 'Full HD', 'Stereo', 'HDMI, USB, Wi-Fi'),
-('PRD1012', '4K HDR', 'Dolby Audio', 'HDMI, USB, Wi-Fi, Bluetooth'),
-('PRD1013', 'Ultra HD', 'Surround Sound', 'HDMI, USB, Wi-Fi, Bluetooth'),
-('PRD1014', '4K OLED', 'Dolby Atmos', 'HDMI, USB, Wi-Fi, Bluetooth, Ethernet'),
-('PRD1015', 'HD', 'Stereo', 'HDMI, USB');
+('TLV001', 'Full HD', 'Stereo', 'HDMI, USB, Wi-Fi'),
+('TLV002', '4K HDR', 'Dolby Audio', 'HDMI, USB, Wi-Fi, Bluetooth'),
+('TLV003', 'Ultra HD', 'Surround Sound', 'HDMI, USB, Wi-Fi, Bluetooth'),
+('TLV004', '4K OLED', 'Dolby Atmos', 'HDMI, USB, Wi-Fi, Bluetooth, Ethernet'),
+('TLV005', 'HD', 'Stereo', 'HDMI, USB');
+
 
 
 INSERT INTO Phone ( ProductID, CPU, Memory, TouchScreen, BatteryLife, ConnectivitySupport, CameraSpecs) VALUES
-('PRD1001', 'Octa-Core', 128, 'Capacitive', '24 hours', '5G, WiFi 6, Bluetooth 5.2', '12MP Ultra-wide, 48MP Main'),
-('PRD1002', 'Quad-Core', 64, 'Capacitive', '36 hours', '4G, WiFi 5, Bluetooth 5.0', '8MP Wide, 24MP Main'),
-('PRD1003', 'Octa-Core', 64, 'AMOLED', '20 hours', '4G, WiFi 5, Bluetooth 5.0', '8MP Wide, 16MP Main'),
-('PRD1004', 'Octa-Core', 256, 'AMOLED', '24 hours', '5G, WiFi 6, Bluetooth 5.1', '12MP Ultra-wide, 64MP Main'),
-('PRD1005','Octa-Core', 256, 'AMOLED', '24 hours', '5G, WiFi 6, Bluetooth 5.1', '12MP Ultra-wide, 108MP Main');
+('PHN001', 'Octa-Core', 128, 'Capacitive', '24 hours', '5G, WiFi 6, Bluetooth 5.2', '12MP Ultra-wide, 48MP Main'),
+('PHN002', 'Quad-Core', 64, 'Capacitive', '36 hours', '4G, WiFi 5, Bluetooth 5.0', '8MP Wide, 24MP Main'),
+('PHN003', 'Octa-Core', 64, 'AMOLED', '20 hours', '4G, WiFi 5, Bluetooth 5.0', '8MP Wide, 16MP Main'),
+('PHN004', 'Octa-Core', 256, 'AMOLED', '24 hours', '5G, WiFi 6, Bluetooth 5.1', '12MP Ultra-wide, 64MP Main'),
+('PHN005', 'Octa-Core', 256, 'AMOLED', '24 hours', '5G, WiFi 6, Bluetooth 5.1', '12MP Ultra-wide, 108MP Main');
 INSERT INTO Laptop (ProductID, CPU, Memory, ConnectivityPorts, BatteryLife, SoundTech, GraphicsCard) VALUES
-('PRD1006', 'Intel Core i7', 16, 'USB-C, HDMI, Wi-Fi, Bluetooth', '10 hours', 'Dolby Audio', 'NVIDIA RTX 3060'),
-('PRD1007', 'Intel Core i5', 8, 'USB 3.0, HDMI, Wi-Fi, Bluetooth', '12 hours', 'Standard Stereo', 'Integrated Intel Graphics'),
-('PRD1008', 'Intel Core i9', 32, 'USB-C, Thunderbolt, Wi-Fi 6, Bluetooth 5.0', '8 hours', 'Dolby Atmos', 'NVIDIA RTX 3080'),
-('PRD1009', 'AMD Ryzen 5', 16, 'USB-C, HDMI, Wi-Fi, Bluetooth', '9 hours', 'High Definition Audio', 'AMD Radeon Graphics'),
-('PRD1010', 'AMD Ryzen 3', 8, 'USB 3.0, HDMI, Wi-Fi, Bluetooth', '11 hours', 'Standard Stereo', 'Integrated AMD Graphics');
+('LAP001', 'Intel Core i7', 16, 'USB-C, HDMI, Wi-Fi, Bluetooth', '10 hours', 'Dolby Audio', 'NVIDIA RTX 3060'),
+('LAP002', 'Intel Core i5', 8, 'USB 3.0, HDMI, Wi-Fi, Bluetooth', '12 hours', 'Standard Stereo', 'Integrated Intel Graphics'),
+('LAP003', 'Intel Core i9', 32, 'USB-C, Thunderbolt, Wi-Fi 6, Bluetooth 5.0', '8 hours', 'Dolby Atmos', 'NVIDIA RTX 3080'),
+('LAP004', 'AMD Ryzen 5', 16, 'USB-C, HDMI, Wi-Fi, Bluetooth', '9 hours', 'High Definition Audio', 'AMD Radeon Graphics'),
+('LAP005', 'AMD Ryzen 3', 8, 'USB 3.0, HDMI, Wi-Fi, Bluetooth', '11 hours', 'Standard Stereo', 'Integrated AMD Graphics');
 INSERT INTO AirConditioner (ProductID, Type, CoolingPower, AirFilteringTech, GasType) VALUES
-('PRD1016', 'Split AC', 1.5, 'HEPA Filter', 'R32'),
-('PRD1017', 'Smart AC', 2.0, 'Activated Carbon Filter', 'R410A'),
-('PRD1018', 'Split AC', 2.5, 'UV Air Purification', 'R32'),
-('PRD1019', 'Portable AC', 1.2, 'Dust Filter', 'R290'),
-('PRD1020', 'Window AC', 1.8, 'Bio Filter', 'R22');
+('ACN001', 'Split AC', 1.5, 'HEPA Filter', 'R32'),
+('ACN002', 'Smart AC', 2.0, 'Activated Carbon Filter', 'R410A'),
+('ACN003', 'Split AC', 2.5, 'UV Air Purification', 'R32'),
+('ACN004', 'Portable AC', 1.2, 'Dust Filter', 'R290'),
+('ACN005', 'Window AC', 1.8, 'Bio Filter', 'R22');
 INSERT INTO Refrigerator (ProductID, FridgeType, Capacity, PreservationTech) VALUES
-('PRD1021', 'Double Door', 500, 'Frost Free, Multi Airflow System'),
-('PRD1022', 'Single Door', 350, 'Static Cooling, Energy Saving Mode'),
-('PRD1023', 'Smart Fridge', 400, 'Frost Free, Wi-Fi Enabled Controls'),
-('PRD1024', 'Side-by-Side', 700, 'Frost Free, Ice Dispenser'),
-('PRD1025', 'Compact', 200, 'Static Cooling, Adjustable Shelves');
+('FRG001', 'Double Door', 500, 'Frost Free, Multi Airflow System'),
+('FRG002', 'Single Door', 350, 'Static Cooling, Energy Saving Mode'),
+('FRG003', 'Smart Fridge', 400, 'Frost Free, Wi-Fi Enabled Controls'),
+('FRG004', 'Side-by-Side', 700, 'Frost Free, Ice Dispenser'),
+('FRG005', 'Compact', 200, 'Static Cooling, Adjustable Shelves');
 INSERT INTO WashingMachine (ProductID, WasherType, MotorType, WashingTech) VALUES
-('PRD1026', 'Front Load', 'Inverter Motor', 'Steam Wash'),
-('PRD1027', 'Top Load', 'Conventional Motor', 'Agitator Wash'),
-('PRD1028', 'Combo', 'Digital Inverter Motor', 'Eco Bubble Wash'),
-('PRD1029', 'Portable', 'Brushed Motor', 'Impeller Wash'),
-('PRD1030', 'Front Load', 'SmartDrive Motor', 'Direct Drive Wash');
+('WSH001', 'Front Load', 'Inverter Motor', 'Steam Wash'),
+('WSH002', 'Top Load', 'Conventional Motor', 'Agitator Wash'),
+('WSH003', 'Combo', 'Digital Inverter Motor', 'Eco Bubble Wash'),
+('WSH004', 'Portable', 'Brushed Motor', 'Impeller Wash'),
+('WSH005', 'Front Load', 'SmartDrive Motor', 'Direct Drive Wash');
 INSERT INTO RiceCooker (ProductID, CookerType, CookingTech, CookingFunction) VALUES
-('PRD1031', 'Basic', 'Thermal Heating', 'Standard Cook'),
-('PRD1032', 'Multifunctional', 'Fuzzy Logic', 'Multi Cook, Slow Cook'),
-('PRD1033', 'Smart', 'Induction Heating', 'App-Controlled, Preset Menus'),
-('PRD1034', 'Compact', 'Thermal Heating', 'Rapid Cook'),
-('PRD1035', 'Advanced', '3D Heating', 'Multigrain, Quick Cook');
+('RCK001', 'Basic', 'Thermal Heating', 'Standard Cook'),
+('RCK002', 'Multifunctional', 'Fuzzy Logic', 'Multi Cook, Slow Cook'),
+('RCK003', 'Smart', 'Induction Heating', 'App-Controlled, Preset Menus'),
+('RCK004', 'Compact', 'Thermal Heating', 'Rapid Cook'),
+('RCK005', 'Advanced', '3D Heating', 'Multigrain, Quick Cook');
 
 
 
 INSERT INTO ProductColor (ProductID, ColorID) VALUES 
-('PRD1001', 'COL001'), ('PRD1001', 'COL002'),
-('PRD1002', 'COL002'), 
-('PRD1003', 'COL001'), ('PRD1003', 'COL004'),
-('PRD1004', 'COL004'), 
-('PRD1005', 'COL003'), ('PRD1005', 'COL005'),
-('PRD1006', 'COL002'), ('PRD1006', 'COL001'),
-('PRD1007', 'COL003'), ('PRD1007', 'COL005'),
-('PRD1008', 'COL004'), ('PRD1008', 'COL002'),
-('PRD1009', 'COL005'), 
-('PRD1010', 'COL001'), ('PRD1010', 'COL005'),
-('PRD1011', 'COL001'), ('PRD1011', 'COL003'),
-('PRD1012', 'COL002'), ('PRD1012', 'COL004'),
-('PRD1013', 'COL005'), ('PRD1013', 'COL003'),
-('PRD1014', 'COL001'), ('PRD1014', 'COL004'),
-('PRD1015', 'COL002'), ('PRD1015', 'COL005'),
-('PRD1016', 'COL001'), ('PRD1016', 'COL003'),
-('PRD1017', 'COL002'), ('PRD1017', 'COL004'),
-('PRD1018', 'COL003'), ('PRD1018', 'COL004'),
-('PRD1019', 'COL001'), ('PRD1019', 'COL002'),
-('PRD1020', 'COL005'), ('PRD1020', 'COL002'),
-('PRD1021', 'COL003'), ('PRD1021', 'COL004'),
-('PRD1022', 'COL001'), ('PRD1022', 'COL002'),
-('PRD1023', 'COL005'), ('PRD1023', 'COL002'),
-('PRD1024', 'COL003'), ('PRD1024', 'COL001'),
-('PRD1025', 'COL004'), ('PRD1025', 'COL005'),
-('PRD1026', 'COL001'), ('PRD1026', 'COL003'),
-('PRD1027', 'COL002'), ('PRD1027', 'COL004'),
-('PRD1028', 'COL005'), ('PRD1028', 'COL001'),
-('PRD1029', 'COL003'), ('PRD1029', 'COL002'),
-('PRD1030', 'COL004'), ('PRD1030', 'COL001'),
-('PRD1031', 'COL001'), ('PRD1031', 'COL003'),
-('PRD1032', 'COL002'), ('PRD1032', 'COL004'),
-('PRD1033', 'COL005'), ('PRD1033', 'COL001'),
-('PRD1034', 'COL003'), ('PRD1034', 'COL002'),
-('PRD1035', 'COL004'), ('PRD1035', 'COL001');
+('PHN001', 'COL001'), ('PHN001', 'COL002'),
+('PHN002', 'COL002'), 
+('PHN003', 'COL001'), ('PHN003', 'COL004'),
+('PHN004', 'COL004'), 
+('PHN005', 'COL003'), ('PHN005', 'COL005'),
+('LAP001', 'COL002'), ('LAP001', 'COL001'),
+('LAP002', 'COL003'), ('LAP002', 'COL005'),
+('LAP003', 'COL004'), ('LAP003', 'COL002'),
+('LAP004', 'COL005'), 
+('LAP005', 'COL001'), ('LAP005', 'COL005'),
+('TLV001', 'COL001'), ('TLV001', 'COL003'),
+('TLV002', 'COL002'), ('TLV002', 'COL004'),
+('TLV003', 'COL005'), ('TLV003', 'COL003'),
+('TLV004', 'COL001'), ('TLV004', 'COL004'),
+('TLV005', 'COL002'), ('TLV005', 'COL005'),
+('ACN001', 'COL001'), ('ACN001', 'COL003'),
+('ACN002', 'COL002'), ('ACN002', 'COL004'),
+('ACN003', 'COL003'), ('ACN003', 'COL004'),
+('ACN004', 'COL001'), ('ACN004', 'COL002'),
+('ACN005', 'COL005'), ('ACN005', 'COL002'),
+('FRG001', 'COL003'), ('FRG001', 'COL004'),
+('FRG002', 'COL001'), ('FRG002', 'COL002'),
+('FRG003', 'COL005'), ('FRG003', 'COL002'),
+('FRG004', 'COL003'), ('FRG004', 'COL001'),
+('FRG005', 'COL004'), ('FRG005', 'COL005'),
+('WSH001', 'COL001'), ('WSH001', 'COL003'),
+('WSH002', 'COL002'), ('WSH002', 'COL004'),
+('WSH003', 'COL005'), ('WSH003', 'COL001'),
+('WSH004', 'COL003'), ('WSH004', 'COL002'),
+('WSH005', 'COL004'), ('WSH005', 'COL001'),
+('RCK001', 'COL001'), ('RCK001', 'COL003'),
+('RCK002', 'COL002'), ('RCK002', 'COL004'),
+('RCK003', 'COL005'), ('RCK003', 'COL001'),
+('RCK004', 'COL003'), ('RCK004', 'COL002'),
+('RCK005', 'COL004'), ('RCK005', 'COL001');
+
 
 
 
@@ -486,87 +501,95 @@ INSERT INTO ProductColor (ProductID, ColorID) VALUES
 
 
 INSERT INTO ProductMaterial (ProductID, MaterialID) VALUES 
-('PRD1001', 'MAT001'), ('PRD1001', 'MAT002'),
-('PRD1002', 'MAT001'), ('PRD1002', 'MAT003'),
-('PRD1003', 'MAT002'), 
-('PRD1004', 'MAT003'), ('PRD1004', 'MAT005'),
-('PRD1005', 'MAT004'), ('PRD1005', 'MAT001'),
-('PRD1006', 'MAT001'), 
-('PRD1007', 'MAT002'), ('PRD1007', 'MAT004'),
-('PRD1008', 'MAT003'), 
-('PRD1009', 'MAT001'), ('PRD1009', 'MAT003'),
-('PRD1010', 'MAT004') ,
-('PRD1011', 'MAT001'), ('PRD1011', 'MAT003'),
-('PRD1012', 'MAT002'), ('PRD1012', 'MAT004'),
-('PRD1013', 'MAT005'), ('PRD1013', 'MAT003'),
-('PRD1014', 'MAT002'), ('PRD1014', 'MAT004'),
-('PRD1015', 'MAT001'), ('PRD1015', 'MAT003'),
-('PRD1016', 'MAT001'), ('PRD1016', 'MAT003'),
-('PRD1017', 'MAT002'), ('PRD1017', 'MAT004'),
-('PRD1018', 'MAT004'), ('PRD1018', 'MAT005'),
-('PRD1019', 'MAT002'), ('PRD1019', 'MAT003'),
-('PRD1020', 'MAT001'), ('PRD1020', 'MAT002'),
-('PRD1021', 'MAT004'), ('PRD1021', 'MAT005'),
-('PRD1022', 'MAT002'), ('PRD1022', 'MAT003'),
-('PRD1023', 'MAT003'), ('PRD1023', 'MAT001'),
-('PRD1024', 'MAT005'), ('PRD1024', 'MAT002'),
-('PRD1025', 'MAT004'), ('PRD1025', 'MAT003'),
-('PRD1026', 'MAT001'), ('PRD1026', 'MAT002'),
-('PRD1027', 'MAT003'), ('PRD1027', 'MAT004'),
-('PRD1028', 'MAT005'), ('PRD1028', 'MAT001'),
-('PRD1029', 'MAT002'), ('PRD1029', 'MAT003'),
-('PRD1030', 'MAT004'), ('PRD1030', 'MAT001'),
-('PRD1032', 'MAT003'), ('PRD1032', 'MAT004'),
-('PRD1033', 'MAT005'), ('PRD1033', 'MAT001'),
-('PRD1034', 'MAT002'), ('PRD1034', 'MAT003'),
-('PRD1035', 'MAT004'), ('PRD1035', 'MAT001');
+('PHN001', 'MAT001'), ('PHN001', 'MAT002'),
+('PHN002', 'MAT001'), ('PHN002', 'MAT003'),
+('PHN003', 'MAT002'), 
+('PHN004', 'MAT003'), ('PHN004', 'MAT005'),
+('PHN005', 'MAT004'), ('PHN005', 'MAT001'),
+-- Laptops
+('LAP001', 'MAT001'), 
+('LAP002', 'MAT002'), ('LAP002', 'MAT004'),
+('LAP003', 'MAT003'), 
+('LAP004', 'MAT001'), ('LAP004', 'MAT003'),
+('LAP005', 'MAT004'),
+-- Televisions
+('TLV001', 'MAT001'), ('TLV001', 'MAT003'),
+('TLV002', 'MAT002'), ('TLV002', 'MAT004'),
+('TLV003', 'MAT005'), ('TLV003', 'MAT003'),
+('TLV004', 'MAT002'), ('TLV004', 'MAT004'),
+('TLV005', 'MAT001'), ('TLV005', 'MAT003'),
+-- Air Conditioners
+('ACN001', 'MAT001'), ('ACN001', 'MAT003'),
+('ACN002', 'MAT002'), ('ACN002', 'MAT004'),
+('ACN003', 'MAT004'), ('ACN003', 'MAT005'),
+('ACN004', 'MAT002'), ('ACN004', 'MAT003'),
+('ACN005', 'MAT001'), ('ACN005', 'MAT002'),
+-- Refrigerators
+('FRG001', 'MAT004'), ('FRG001', 'MAT005'),
+('FRG002', 'MAT002'), ('FRG002', 'MAT003'),
+('FRG003', 'MAT003'), ('FRG003', 'MAT001'),
+('FRG004', 'MAT005'), ('FRG004', 'MAT002'),
+('FRG005', 'MAT004'), ('FRG005', 'MAT003'),
+-- Washing Machines
+('WSH001', 'MAT001'), ('WSH001', 'MAT002'),
+('WSH002', 'MAT003'), ('WSH002', 'MAT004'),
+('WSH003', 'MAT005'), ('WSH003', 'MAT001'),
+('WSH004', 'MAT002'), ('WSH004', 'MAT003'),
+('WSH005', 'MAT004'), ('WSH005', 'MAT001'),
+-- Rice Cookers
+('RCK001', 'MAT003'), ('RCK001', 'MAT004'),
+('RCK002', 'MAT005'), ('RCK002', 'MAT001'),
+('RCK003', 'MAT002'), ('RCK003', 'MAT003'),
+('RCK004', 'MAT004'), ('RCK004', 'MAT001'),
+('RCK005', 'MAT004'), ('RCK005', 'MAT001');
 
 
 
 INSERT INTO ProductUtility (ProductID, UtilityID) VALUES 
-('PRD1001', 'UTI001'), ('PRD1001', 'UTI002'),
-('PRD1002', 'UTI002'), ('PRD1002', 'UTI003'),
-('PRD1003', 'UTI003'), ('PRD1003', 'UTI004'),
-('PRD1004', 'UTI004'), ('PRD1004', 'UTI005'),
-('PRD1005', 'UTI005'), ('PRD1005', 'UTI001'),
-('PRD1006', 'UTI001'), ('PRD1006', 'UTI002'), ('PRD1006', 'UTI003'), 
-('PRD1007', 'UTI001'), ('PRD1007', 'UTI002'), ('PRD1007', 'UTI004'),
-('PRD1008', 'UTI001'), ('PRD1008', 'UTI002'), ('PRD1008', 'UTI005'),
-('PRD1009', 'UTI001'), ('PRD1009', 'UTI002'), ('PRD1009', 'UTI004'),
-('PRD1010', 'UTI001'), ('PRD1010', 'UTI002'), ('PRD1010', 'UTI005'),
-('PRD1011', 'UTI001'), ('PRD1011', 'UTI003'),
-('PRD1012', 'UTI002'), ('PRD1012', 'UTI004'),
-('PRD1013', 'UTI005'), ('PRD1013', 'UTI004'),
-('PRD1014', 'UTI003'), ('PRD1014', 'UTI002'),
-('PRD1015', 'UTI001'), ('PRD1015', 'UTI005'),
-('PRD1016', 'UTI001'), ('PRD1016', 'UTI003'),
-('PRD1017', 'UTI002'), ('PRD1017', 'UTI004'),
-('PRD1018', 'UTI002'), ('PRD1018', 'UTI003'),
-('PRD1019', 'UTI004'), ('PRD1019', 'UTI005'),
-('PRD1020', 'UTI001'), ('PRD1020', 'UTI002'),
-('PRD1021', 'UTI002'), ('PRD1021', 'UTI003'),
-('PRD1022', 'UTI004'), ('PRD1022', 'UTI005'),
-('PRD1023', 'UTI001'), ('PRD1023', 'UTI005'),
-('PRD1024', 'UTI003'), ('PRD1024', 'UTI002'),
-('PRD1025', 'UTI004'), ('PRD1025', 'UTI001'),
-('PRD1026', 'UTI001'), ('PRD1026', 'UTI002'),
-('PRD1027', 'UTI003'), ('PRD1027', 'UTI004'),
-('PRD1028', 'UTI005'), ('PRD1028', 'UTI001'),
-('PRD1029', 'UTI002'), ('PRD1029', 'UTI003'),
-('PRD1030', 'UTI004'), ('PRD1030', 'UTI005'),
-('PRD1031', 'UTI001'), ('PRD1031', 'UTI002'),
-('PRD1032', 'UTI003'), ('PRD1032', 'UTI004'),
-('PRD1033', 'UTI005'), ('PRD1033', 'UTI001'),
-('PRD1034', 'UTI002'), ('PRD1034', 'UTI003'),
-('PRD1035', 'UTI004'), ('PRD1035', 'UTI005');
+('PHN001', 'UTI001'), ('PHN001', 'UTI002'),
+('PHN002', 'UTI002'), ('PHN002', 'UTI003'),
+('PHN003', 'UTI003'), ('PHN003', 'UTI004'),
+('PHN004', 'UTI004'), ('PHN004', 'UTI005'),
+('PHN005', 'UTI005'), ('PHN005', 'UTI001'),
+('LAP001', 'UTI001'), ('LAP001', 'UTI002'), ('LAP001', 'UTI003'), 
+('LAP002', 'UTI001'), ('LAP002', 'UTI002'), ('LAP002', 'UTI004'),
+('LAP003', 'UTI001'), ('LAP003', 'UTI002'), ('LAP003', 'UTI005'),
+('LAP004', 'UTI001'), ('LAP004', 'UTI002'), ('LAP004', 'UTI004'),
+('LAP005', 'UTI001'), ('LAP005', 'UTI002'), ('LAP005', 'UTI005'),
+('TLV001', 'UTI001'), ('TLV001', 'UTI003'),
+('TLV002', 'UTI002'), ('TLV002', 'UTI004'),
+('TLV003', 'UTI005'), ('TLV003', 'UTI004'),
+('TLV004', 'UTI003'), ('TLV004', 'UTI002'),
+('TLV005', 'UTI001'), ('TLV005', 'UTI005'),
+('ACN001', 'UTI001'), ('ACN001', 'UTI003'),
+('ACN002', 'UTI002'), ('ACN002', 'UTI004'),
+('ACN003', 'UTI002'), ('ACN003', 'UTI003'),
+('ACN004', 'UTI004'), ('ACN004', 'UTI005'),
+('ACN005', 'UTI001'), ('ACN005', 'UTI002'),
+('FRG001', 'UTI002'), ('FRG001', 'UTI003'),
+('FRG002', 'UTI004'), ('FRG002', 'UTI005'),
+('FRG003', 'UTI001'), ('FRG003', 'UTI005'),
+('FRG004', 'UTI003'), ('FRG004', 'UTI002'),
+('FRG005', 'UTI004'), ('FRG005', 'UTI001'),
+('WSH001', 'UTI001'), ('WSH001', 'UTI002'),
+('WSH002', 'UTI003'), ('WSH002', 'UTI004'),
+('WSH003', 'UTI005'), ('WSH003', 'UTI001'),
+('WSH004', 'UTI002'), ('WSH004', 'UTI003'),
+('WSH005', 'UTI004'), ('WSH005', 'UTI005'),
+('RCK001', 'UTI001'), ('RCK001', 'UTI002'),
+('RCK002', 'UTI003'), ('RCK002', 'UTI004'),
+('RCK003', 'UTI005'), ('RCK003', 'UTI001'),
+('RCK004', 'UTI002'), ('RCK004', 'UTI003'),
+('RCK005', 'UTI004'), ('RCK005', 'UTI005');
+
 
 
 
 INSERT INTO Account (AccountID, Username, Password, Email, PhoneNumber, FirstName, LastName, Age) VALUES
-('ACC001', 'phamhuuhuy', 'password123!', 'phamhuuhuy@example.com', '0987654321', 'Phạm', 'Hữu Huy', 28),
-('ACC002', 'tranvanlam', 'passwor123!', 'tranvanlam@example.com', '0987654322', 'Trần', 'Văn Lâm', 32),
-('ACC003', 'lethibichnga', 'securePass456!', 'lethibichnga@example.com', '0987654323', 'Lê', 'Thị Bích Ngà', 26),
-('ACC004', 'phamthanhhoa', 'mySecurePass789!', 'phamthanhhoa@example.com', '0987654324', 'Phạm', 'Thanh Hoa', 29),
+('ACS001', 'phamhuuhuy', 'password123!', 'phamhuuhuy@example.com', '0987654321', 'Phạm', 'Hữu Huy', 28),
+('ACS002', 'tranvanlam', 'passwor123!', 'tranvanlam@example.com', '0987654322', 'Trần', 'Văn Lâm', 32),
+('ACS003', 'lethibichnga', 'securePass456!', 'lethibichnga@example.com', '0987654323', 'Lê', 'Thị Bích Ngà', 26),
+('ACS004', 'phamthanhhoa', 'mySecurePass789!', 'phamthanhhoa@example.com', '0987654324', 'Phạm', 'Thanh Hoa', 29),
 ('ACC005', 'ngocanh92', 'NgocAnh@92', 'ngocanh92@example.com', '0987123455', 'Ngọc', 'Anh', 29),
 ('ACC006', 'minhthu1988', 'ThuMinh!1988', 'minhthu1988@example.com', '0987234566', 'Minh', 'Thư', 33),
 ('ACC007', 'hoangtuan91', 'TuanHoang1991*', 'hoangtuan91@example.com', '0987345677', 'Hoàng', 'Tuấn', 30),
@@ -612,30 +635,31 @@ INSERT INTO Customer (CustomerID) VALUES
 ('ACC024');
 
 INSERT INTO Employee (EmployeeID, StartDate, Status, SuperiorID) VALUES
-('ACC001', '2021-01-01', 'Active', NULL),
-('ACC002', '2021-01-02', 'Active', 'ACC001'),
-('ACC003', '2021-01-03', 'Active', 'ACC001'),
-('ACC004', '2021-01-04', 'Active', 'ACC002');
+('ACS001', '2021-01-01', 'Active', NULL),
+('ACS002', '2021-01-02', 'Active', 'ACS001'),
+('ACS003', '2021-01-03', 'Active', 'ACS001'),
+('ACS004', '2021-01-04', 'Active', 'ACS002');
 
 -- Insert sample data into the Orders table
 INSERT INTO Orders (OrderID,  CreationDate, Status, Note, ProductQuantity, EmployeeID) VALUES
-('ORD007', '2023-03-15', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 5, 'ACC001'),
-('ORD008', '2023-03-16', 'Đang xử lý', 'Nhập hàng từ nhà cung cấp', 3, 'ACC002'),
-('ORD009', '2023-03-17', 'Đang vận chuyển', 'Nhập hàng từ nhà cung cấp', 4, 'ACC003'),
-('ORD010', '2023-03-18', 'Chờ xác nhận', 'Nhập hàng từ nhà cung cấp', 2, 'ACC004'),
-('ORD011', '2023-03-19', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 6, 'ACC001'),
-('ORD012', '2023-03-15', 'Đang xử lý', 'Đơn hàng bán ra', 3, 'ACC002'),
-('ORD013', '2023-03-16', 'Đã giao', 'Đơn hàng bán ra', 2, 'ACC003'),
-('ORD014', '2023-03-17', 'Đang vận chuyển', 'Đơn hàng bán ra', 4, 'ACC004'),
-('ORD015', '2023-03-18', 'Chờ xác nhận', 'Đơn hàng bán ra', 1, 'ACC001'),
-('ORD016', '2023-03-19', 'Đang xử lý', 'Đơn hàng bán ra', 5, 'ACC002');
+('ORP007', '2023-03-15', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 5, 'ACS001'),
+('ORP008', '2023-03-16', 'Đang xử lý', 'Nhập hàng từ nhà cung cấp', 3, 'ACS002'),
+('ORP009', '2023-03-17', 'Đang vận chuyển', 'Nhập hàng từ nhà cung cấp', 4, 'ACS003'),
+('ORP010', '2023-03-18', 'Chờ xác nhận', 'Nhập hàng từ nhà cung cấp', 2, 'ACS004'),
+('ORP011', '2023-03-19', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 6, 'ACS001'),
+('ORS012', '2023-03-15', 'Đang xử lý', 'Đơn hàng bán ra', 3, 'ACS002'),
+('ORS013', '2023-03-16', 'Đã giao', 'Đơn hàng bán ra', 2, 'ACS003'),
+('ORS014', '2023-03-17', 'Đang vận chuyển', 'Đơn hàng bán ra', 4, 'ACS004'),
+('ORS015', '2023-03-18', 'Chờ xác nhận', 'Đơn hàng bán ra', 1, 'ACS001'),
+('ORS016', '2023-03-19', 'Đang xử lý', 'Đơn hàng bán ra', 5, 'ACS002');
 
 -- Insert sample data into the CustomerAddress table
 INSERT INTO CustomerAddress (AddressID, CustomerID, Street, District, City, State) VALUES
-('ADD001', 'ACC002', '123 Lê Lợi', '1', 'TP.Hồ Chí Minh', 'Việt Nam'),
-('ADD002', 'ACC001', '456 Phan Đình Phùng', '2', 'Hà Nội', 'Việt Nam'),
-('ADD003', 'ACC004', '789 Trần Hưng Đạo', '3', 'Đà Nẵng', 'Việt Nam'),
-('ADD004', 'ACC003', '1011 Nguyễn Trãi', '4', 'Cần Thơ', 'Việt Nam'),
+('ADD001', 'ACC005', '123 Lê Lợi', '1', 'TP.Hồ Chí Minh', 'Việt Nam'),
+('ADD002', 'ACC006', '456 Phan Đình Phùng', '2', 'Hà Nội', 'Việt Nam'),
+('ADD003', 'ACC007', '789 Trần Hưng Đạo', '3', 'Đà Nẵng', 'Việt Nam'),
+('ADD004', 'ACC008', '1011 Nguyễn Trãi', '4', 'Cần Thơ', 'Việt Nam'),
+('ADD005', 'ACC009', '1011 Nguyễn Trãi', '4', 'Cần Thơ', 'Việt Nam'),
 ('ADD010', 'ACC010', '123 Phan Văn Trị', '7', 'TP.Hồ Chí Minh', 'Việt Nam'),
 ('ADD011', 'ACC011', '456 Lê Duẩn', '1', 'Hà Nội', 'Việt Nam'),
 ('ADD012', 'ACC012', '789 Nguyễn Trãi', '5', 'Đà Nẵng', 'Việt Nam'),
@@ -653,34 +677,36 @@ INSERT INTO CustomerAddress (AddressID, CustomerID, Street, District, City, Stat
 ('ADD024', 'ACC024', '3133 Lê Hồng Phong', '3', 'Biên Hòa', 'Việt Nam');
 INSERT INTO PurchaseOrder (OrderID, OrderDate, TotalAmount) 
 VALUES 
-('ORD007', '2023-03-15', 1500),
-('ORD008', '2023-03-16', 900),
-('ORD009', '2023-03-17', 1200),
-('ORD010', '2023-03-18', 600),
-('ORD011', '2023-03-19', 1800);
+('ORP007', '2023-03-15', 1500),
+('ORP008', '2023-03-16', 900),
+('ORP009', '2023-03-17', 1200),
+('ORP010', '2023-03-18', 600),
+('ORP011', '2023-03-19', 1800);
 INSERT INTO SaleOrder (OrderID, CustomerID, ExpectedDeliveryDate, TotalAmount, Address) 
 VALUES 
-('ORD012', 'ACC007', '2023-03-20', 900, 'Địa chỉ giao hàng A'),
-('ORD013', 'ACC008', '2023-03-21', 600, 'Địa chỉ giao hàng B'),
-('ORD014', 'ACC009', '2023-03-22', 1200, 'Địa chỉ giao hàng C'),
-('ORD015', 'ACC010', '2023-03-23', 300, 'Địa chỉ giao hàng D'),
-('ORD016', 'ACC011', '2023-03-24', 1500, 'Địa chỉ giao hàng E');
+('ORS012', 'ACC007', '2023-03-20', 900, 'Địa chỉ giao hàng A'),
+('ORS013', 'ACC008', '2023-03-21', 600, 'Địa chỉ giao hàng B'),
+('ORS014', 'ACC009', '2023-03-22', 1200, 'Địa chỉ giao hàng C'),
+('ORS015', 'ACC010', '2023-03-23', 300, 'Địa chỉ giao hàng D'),
+('ORS016', 'ACC011', '2023-03-24', 1500, 'Địa chỉ giao hàng E');
 
 
 -- Insert sample data into the OrderDetails table
 INSERT INTO OrderDetails (OrderDetailsID, OrderID, ProductID, Quantity) VALUES
-('ODTL010', 'ORD007', 'PRD1001', 2),
-('ODTL011', 'ORD008', 'PRD1002', 1),
-('ODTL012', 'ORD009', 'PRD1003', 2),
-('ODTL013', 'ORD010', 'PRD1004', 1),
-('ODTL014', 'ORD011', 'PRD1005', 3),
-('ODTL015', 'ORD012', 'PRD1006', 1),
-('ODTL016', 'ORD013', 'PRD1007', 1),
-('ODTL017', 'ORD014', 'PRD1008', 2),
-('ODTL018', 'ORD015', 'PRD1009', 1),
-('ODTL019', 'ORD016', 'PRD1010', 2);
+('ODTL010', 'ORP007', 'PHN001', 2),
+('ODTL011', 'ORP008', 'PHN002', 1),
+('ODTL012', 'ORP009', 'PHN003', 2),
+('ODTL013', 'ORP010', 'PHN004', 1),
+('ODTL014', 'ORP011', 'PHN005', 3),
+-- Laptops
+('ODTL015', 'ORS012', 'LAP001', 1),
+('ODTL016', 'ORS013', 'LAP002', 1),
+('ODTL017', 'ORS014', 'LAP003', 2),
+('ODTL018', 'ORS015', 'LAP004', 1),
+('ODTL019', 'ORS016', 'LAP005', 2);
 
 
+-- ...Continue with similar INSERT statements for the Television, Phone, Laptop, Refrigerator, AirConditioner, WashingMachine, RiceCooker, PurchaseOrder, and SaleOrder tables.
 -- ...Continue with similar INSERT statements for the Television, Phone, Laptop, Refrigerator, AirConditioner, WashingMachine, RiceCooker, PurchaseOrder, and SaleOrder tables.
 
 -- Trigger for updating stock on OrderDetails insert
@@ -690,12 +716,12 @@ DELIMITER //
 CREATE TRIGGER UpdateStockOnOrderDetailsInsert AFTER INSERT ON OrderDetails
 FOR EACH ROW
 BEGIN
-    DECLARE OrderTypePrefix VARCHAR(4);
+    DECLARE OrderTypePrefix VARCHAR(3);
 
     -- Determine the order type based on OrderID prefix
     SELECT CASE 
-        WHEN LEFT(NEW.OrderID, 4) = 'ORDP' THEN 'Import' -- Đơn nhập
-        WHEN LEFT(NEW.OrderID, 4) = 'ORDS' THEN 'Sale'   -- Đơn bán
+        WHEN LEFT(NEW.OrderID, 3) = 'ORP' THEN 'Import' -- Đơn nhập
+        WHEN LEFT(NEW.OrderID, 3) = 'ORS' THEN 'Sale'   -- Đơn bán
         ELSE 'Unknown'
     END INTO OrderTypePrefix;
 
@@ -722,11 +748,11 @@ DELIMITER ;
 
 -- Trigger for updating TotalAmount on PurchaseOrder insert, update, delete
 DELIMITER //
-CREATE TRIGGER UpdatePurchaseOrderTotalPrice AFTER INSERT, UPDATE, DELETE ON OrderDetails
+CREATE TRIGGER UpdatePurchaseOrderTotalPrice AFTER INSERT ON OrderDetails
 FOR EACH ROW
 BEGIN
     -- Check if the trigger operation is related to a purchase order ('ORDP')
-    IF EXISTS (SELECT 1 FROM PurchaseOrder p WHERE LEFT(NEW.OrderID, 4) = 'ORDP') THEN
+    IF EXISTS (SELECT 1 FROM PurchaseOrder p WHERE LEFT(NEW.OrderID, 3) = 'ORP') THEN
         -- Update TotalAmount for purchase orders
         UPDATE PurchaseOrder p
         SET p.TotalAmount = (
@@ -742,11 +768,11 @@ DELIMITER ;
 
 -- Trigger for updating TotalAmount on SaleOrder insert, update, delete
 DELIMITER //
-CREATE TRIGGER UpdateSaleOrderTotalPrice AFTER INSERT, UPDATE, DELETE ON OrderDetails
+CREATE TRIGGER UpdateSaleOrderTotalPrice AFTER INSERT ON OrderDetails
 FOR EACH ROW
 BEGIN
     -- Check if the trigger operation is related to a sale order ('ORDS')
-    IF EXISTS (SELECT 1 FROM SaleOrder s WHERE LEFT(NEW.OrderID, 4) = 'ORDS') THEN
+    IF EXISTS (SELECT 1 FROM SaleOrder s WHERE LEFT(NEW.OrderID, 3) = 'ORS') THEN
         -- Update TotalAmount for sale orders
         UPDATE SaleOrder s
         SET s.TotalAmount = (
@@ -759,109 +785,6 @@ BEGIN
     END IF;
 END; //
 DELIMITER ;
--- Function to return bestselling product by category
-CREATE OR REPLACE FUNCTION BestSellingProductByCategoryAndMonth(
-    IN p_Year INT,
-    IN p_Month INT
-)
-RETURNS TABLE
-AS
-RETURN
-    SELECT
-        p.ProductID,
-        p.ProductName,
-        p.ImageURL
-    FROM
-        Product p
-    JOIN OrderDetails od ON p.ProductID = od.ProductID
-    JOIN Orders o ON od.OrderID = o.OrderID
-    WHERE
-        YEAR(o.CreationDate) = p_Year
-        AND MONTH(o.CreationDate) = p_Month
-        AND (
-            (p.ProductID LIKE 'TLV%')
-            OR (p.ProductID LIKE 'LAP%')
-            OR (p.ProductID LIKE 'PHN%')
-            OR (p.ProductID LIKE 'FRG%')
-            OR (p.ProductID LIKE 'ACN%')
-			OR (p.ProductID LIKE 'WSH%')
-            OR (p.ProductID LIKE 'RCK%')
-        )
-    GROUP BY
-        p.ProductID,
-        p.ProductName,
-        p.ImageURL
-    ORDER BY
-        SUM(od.Quantity) DESC
-    LIMIT 1;
---procedure to get sales revenue by product type
-CREATE OR REPLACE PROCEDURE SalesRevenueByProductType(
-    IN p_Year INT,
-    IN p_Month INT
-)
-BEGIN
-    SELECT
-        p.ProductID,
-        SUM(od.Quantity * pr.SalePrice) AS Revenue
-    FROM
-        Product p
-    JOIN OrderDetails od ON p.ProductID = od.ProductID
-    JOIN Orders so ON od.OrderID = so.OrderID
-    JOIN Product pr ON p.ProductID = pr.ProductID
-    WHERE
-        LEFT(so.OrderID, 3) = 'ORS'
-        AND YEAR(so.CreationDate) = p_Year
-        AND MONTH(so.CreationDate) = p_Month
-    GROUP BY
-        p.ProductID;
-END;
---Procedure to get orders count by customer
-CREATE OR REPLACE PROCEDURE OrdersCountByCustomer()
-BEGIN
-    SELECT
-        c.CustomerID,
-        c.CustomerName,
-        COUNT(o.OrderID) AS OrderCount
-    FROM
-        Customer c
-    LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
-    GROUP BY
-        c.CustomerID,
-        c.CustomerName
-    ORDER BY
-        OrderCount DESC;
-END;
--- Function to get top 10 customers by order count
-CREATE OR ALTER FUNCTION TopCustomersByOrderCount(
-    p_Year INT,
-    p_Month INT
-)
-RETURNS TABLE
-AS
-RETURN
-(
-    SELECT
-        CustomerID,
-        CustomerName,
-        OrderCount
-    FROM (
-        SELECT
-            c.CustomerID,
-            c.CustomerName,
-            COUNT(o.OrderID) AS OrderCount,
-            ROW_NUMBER() OVER (ORDER BY COUNT(o.OrderID) DESC) AS RowNum
-        FROM
-            Customer c
-        LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
-        WHERE
-            YEAR(o.CreationDate) = p_Year
-            AND MONTH(o.CreationDate) = p_Month
-        GROUP BY
-            c.CustomerID,
-            c.CustomerName
-        ORDER BY
-            OrderCount DESC
-    ) AS RankedCustomers
-    WHERE
-        RowNum <= 10
-);
+
+
+
