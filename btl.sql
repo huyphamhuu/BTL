@@ -123,10 +123,6 @@ CREATE TABLE IF NOT EXISTS Customer(
 );
 CREATE TABLE IF NOT EXISTS Employee (
     EmployeeID VARCHAR(10) PRIMARY KEY,
-    FirstName VARCHAR(255) NOT NULL,
-    LastName VARCHAR(255) NOT NULL,
-    Email VARCHAR(255) NOT NULL,
-    PhoneNumber VARCHAR(255) NOT NULL,
     StartDate DATE NOT NULL,
     Status VARCHAR(255) NOT NULL,
     SuperiorID VARCHAR(10),
@@ -135,15 +131,12 @@ CREATE TABLE IF NOT EXISTS Employee (
 
 CREATE TABLE IF NOT EXISTS Orders (
     OrderID VARCHAR(10) PRIMARY KEY,
-    OrderCode VARCHAR(255) UNIQUE NOT NULL,
     CreationDate DATE NOT NULL,
     Status VARCHAR(255) NOT NULL,
     Note TEXT NOT NULL,
     ProductQuantity INT NOT NULL,
     EmployeeID VARCHAR(10) NOT NULL,
-    CustomerID VARCHAR(10) NOT NULL,
     CONSTRAINT fk_EmployeeID FOREIGN KEY (EmployeeID) REFERENCES Account(AccountID),
-    CONSTRAINT fk_CustomerID FOREIGN KEY (CustomerID) REFERENCES Account(AccountID),
     CONSTRAINT fk_Orders_EmployeeID FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
 
 );
@@ -571,49 +564,121 @@ INSERT INTO ProductUtility (ProductID, UtilityID) VALUES
 
 INSERT INTO Account (AccountID, Username, Password, Email, PhoneNumber, FirstName, LastName, Age) VALUES
 ('ACC001', 'phamhuuhuy', 'password123!', 'phamhuuhuy@example.com', '0987654321', 'Phạm', 'Hữu Huy', 28),
-('ACC002', 'tranvanlam', 'password123!', 'tranvanlam@example.com', '0987654322', 'Trần', 'Văn Lâm', 32),
+('ACC002', 'tranvanlam', 'passwor123!', 'tranvanlam@example.com', '0987654322', 'Trần', 'Văn Lâm', 32),
 ('ACC003', 'lethibichnga', 'securePass456!', 'lethibichnga@example.com', '0987654323', 'Lê', 'Thị Bích Ngà', 26),
 ('ACC004', 'phamthanhhoa', 'mySecurePass789!', 'phamthanhhoa@example.com', '0987654324', 'Phạm', 'Thanh Hoa', 29),
-('ACC005', 'user5', 'pass123', 'user5@example.com', '1234567895', 'FirstName5', 'LastName5', 35),
-('ACC006', 'user6', 'pass123', 'user6@example.com', '1234567896', 'FirstName6', 'LastName6', 30),
-('ACC007', 'user7', 'pass123', 'user7@example.com', '1234567897', 'FirstName7', 'LastName7', 28),
-('ACC008', 'user8', 'pass123', 'user8@example.com', '1234567898', 'FirstName8', 'LastName8', 33),
-('ACC009', 'user9', 'pass123', 'user9@example.com', '1234567899', 'FirstName9', 'LastName9', 29);
+('ACC005', 'ngocanh92', 'NgocAnh@92', 'ngocanh92@example.com', '0987123455', 'Ngọc', 'Anh', 29),
+('ACC006', 'minhthu1988', 'ThuMinh!1988', 'minhthu1988@example.com', '0987234566', 'Minh', 'Thư', 33),
+('ACC007', 'hoangtuan91', 'TuanHoang1991*', 'hoangtuan91@example.com', '0987345677', 'Hoàng', 'Tuấn', 30),
+('ACC008', 'linhchi24', 'ChiLinh@24', 'linhchi24@example.com', '0987456788', 'Linh', 'Chi', 27),
+('ACC009', 'quanghuy95', 'HuyQuang@95', 'quanghuy95@example.com', '0987567899', 'Quang', 'Huy', 26),
+('ACC010', 'dangnam90', 'NamDang!1990', 'dangnam90@example.com', '0987651010', 'Đặng', 'Nam', 31),
+('ACC011', 'phuongmai87', 'MaiPhuong#1987', 'phuongmai87@example.com', '0987651111', 'Phương', 'Mai', 34),
+('ACC012', 'trungduong92', 'DuongTrung92$', 'trungduong92@example.com', '0987651212', 'Trung', 'Dương', 29),
+('ACC013', 'baoanh88', 'AnhBao*1988', 'baoanh88@example.com', '0987651313', 'Bảo', 'Anh', 33),
+('ACC014', 'hoangyen93', 'YenHoang1993!', 'hoangyen93@example.com', '0987651414', 'Hoàng', 'Yến', 28),
+('ACC015', 'thuylinh89', 'LinhThuy@1989', 'thuylinh89@example.com', '0987651515', 'Thùy', 'Linh', 32),
+('ACC016', 'vietlong94', 'LongViet#1994', 'vietlong94@example.com', '0987651616', 'Việt', 'Long', 27),
+('ACC017', 'ngocbao95', 'BaoNgoc*1995', 'ngocbao95@example.com', '0987651717', 'Ngọc', 'Bảo', 26),
+('ACC018', 'tuananh96', 'AnhTuan1996!', 'tuananh96@example.com', '0987651818', 'Tuấn', 'Anh', 25),
+('ACC019', 'minhhang91', 'HangMinh91$', 'minhhang91@example.com', '0987651919', 'Minh', 'Hằng', 30),
+('ACC020', 'nguyenhoa89', 'HoaNguyen1989!', 'nguyenhoa89@example.com', '0987652020', 'Nguyễn', 'Hoa', 32),
+('ACC021', 'ducmanh87', 'ManhDuc@1987', 'ducmanh87@example.com', '0987652121', 'Đức', 'Mạnh', 34),
+('ACC022', 'hienthao92', 'ThaoHien!1992', 'hienthao92@example.com', '0987652222', 'Hiền', 'Thảo', 29),
+('ACC023', 'thanhson93', 'SonThanh#1993', 'thanhson93@example.com', '0987652323', 'Thanh', 'Sơn', 28),
+('ACC024', 'khanhlinh88', 'LinhKhanh@1988', 'khanhlinh88@example.com', '0987652424', 'Khánh', 'Linh', 33);
+
 
 INSERT INTO Customer (CustomerID) VALUES
 ('ACC005'),
 ('ACC006'),
 ('ACC007'),
 ('ACC008'),
-('ACC009');
+('ACC009'),
+('ACC010'),
+('ACC011'),
+('ACC012'),
+('ACC013'),
+('ACC014'),
+('ACC015'),
+('ACC016'),
+('ACC017'),
+('ACC018'),
+('ACC019'),
+('ACC020'),
+('ACC021'),
+('ACC022'),
+('ACC023'),
+('ACC024');
 
-INSERT INTO Employee (EmployeeID, FirstName, LastName, Email, PhoneNumber, StartDate, Status, SuperiorID) VALUES
-('ACC001', 'John', 'Doe', 'john.doe@example.com', '0123456789', '2021-01-01', 'Active', NULL),
-('ACC002', 'Jane', 'Doe', 'jane.doe@example.com', '9876543210', '2021-01-02', 'Active', 'ACC001'),
-('ACC003', 'Jim', 'Beam', 'jim.beam@example.com', '0123456789', '2021-01-03', 'Active', 'ACC001'),
-('ACC004', 'Jill', 'Valentine', 'jill.valentine@example.com', '9876543210', '2021-01-04', 'Active', 'ACC002');
+INSERT INTO Employee (EmployeeID, StartDate, Status, SuperiorID) VALUES
+('ACC001', '2021-01-01', 'Active', NULL),
+('ACC002', '2021-01-02', 'Active', 'ACC001'),
+('ACC003', '2021-01-03', 'Active', 'ACC001'),
+('ACC004', '2021-01-04', 'Active', 'ACC002');
 
 -- Insert sample data into the Orders table
-INSERT INTO Orders (OrderID, OrderCode, CreationDate, Status, Note, ProductQuantity, EmployeeID, CustomerID) VALUES
-('ORD001', 'OC123', '2023-01-10', 'Đang xử lý', 'Giao hàng trong vòng 24 giờ', 2, 'ACC001', 'ACC002'),
-('ORD002', 'OC124', '2023-01-11', 'Đã giao', 'Giao hàng nhanh', 1, 'ACC002', 'ACC001'),
-('ORD003', 'OC125', '2023-01-12', 'Đang vận chuyển', 'Giao hàng miễn phí', 3, 'ACC003', 'ACC004'),
-('ORD004', 'OC126', '2023-01-13', 'Chờ xác nhận', 'Kiểm tra hàng trước khi thanh toán', 2, 'ACC004', 'ACC003');
+INSERT INTO Orders (OrderID,  CreationDate, Status, Note, ProductQuantity, EmployeeID) VALUES
+('ORD007', '2023-03-15', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 5, 'ACC001'),
+('ORD008', '2023-03-16', 'Đang xử lý', 'Nhập hàng từ nhà cung cấp', 3, 'ACC002'),
+('ORD009', '2023-03-17', 'Đang vận chuyển', 'Nhập hàng từ nhà cung cấp', 4, 'ACC003'),
+('ORD010', '2023-03-18', 'Chờ xác nhận', 'Nhập hàng từ nhà cung cấp', 2, 'ACC004'),
+('ORD011', '2023-03-19', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 6, 'ACC001'),
+('ORD012', '2023-03-15', 'Đang xử lý', 'Đơn hàng bán ra', 3, 'ACC002'),
+('ORD013', '2023-03-16', 'Đã giao', 'Đơn hàng bán ra', 2, 'ACC003'),
+('ORD014', '2023-03-17', 'Đang vận chuyển', 'Đơn hàng bán ra', 4, 'ACC004'),
+('ORD015', '2023-03-18', 'Chờ xác nhận', 'Đơn hàng bán ra', 1, 'ACC001'),
+('ORD016', '2023-03-19', 'Đang xử lý', 'Đơn hàng bán ra', 5, 'ACC002');
 
 -- Insert sample data into the CustomerAddress table
 INSERT INTO CustomerAddress (AddressID, CustomerID, Street, District, City, State) VALUES
 ('ADD001', 'ACC002', '123 Lê Lợi', '1', 'TP.Hồ Chí Minh', 'Việt Nam'),
 ('ADD002', 'ACC001', '456 Phan Đình Phùng', '2', 'Hà Nội', 'Việt Nam'),
 ('ADD003', 'ACC004', '789 Trần Hưng Đạo', '3', 'Đà Nẵng', 'Việt Nam'),
-('ADD004', 'ACC003', '1011 Nguyễn Trãi', '4', 'Cần Thơ', 'Việt Nam');
+('ADD004', 'ACC003', '1011 Nguyễn Trãi', '4', 'Cần Thơ', 'Việt Nam'),
+('ADD010', 'ACC010', '123 Phan Văn Trị', '7', 'TP.Hồ Chí Minh', 'Việt Nam'),
+('ADD011', 'ACC011', '456 Lê Duẩn', '1', 'Hà Nội', 'Việt Nam'),
+('ADD012', 'ACC012', '789 Nguyễn Trãi', '5', 'Đà Nẵng', 'Việt Nam'),
+('ADD013', 'ACC013', '1011 Lý Thường Kiệt', '3', 'Nha Trang', 'Việt Nam'),
+('ADD014', 'ACC014', '1213 Trần Hưng Đạo', '9', 'Cần Thơ', 'Việt Nam'),
+('ADD015', 'ACC015', '1315 Lê Lợi', '2', 'Huế', 'Việt Nam'),
+('ADD016', 'ACC016', '1517 Phạm Ngũ Lão', '10', 'Vũng Tàu', 'Việt Nam'),
+('ADD017', 'ACC017', '1719 Bà Triệu', '4', 'Hải Phòng', 'Việt Nam'),
+('ADD018', 'ACC018', '1921 Lê Thánh Tông', '6', 'Quảng Ninh', 'Việt Nam'),
+('ADD019', 'ACC019', '2123 Hùng Vương', '11', 'Phú Quốc', 'Việt Nam'),
+('ADD020', 'ACC020', '2325 Lê Quý Đôn', '7', 'Bình Dương', 'Việt Nam'),
+('ADD021', 'ACC021', '2527 Nguyễn Huệ', '8', 'Thái Nguyên', 'Việt Nam'),
+('ADD022', 'ACC022', '2729 Trường Chinh', '12', 'Phan Thiết', 'Việt Nam'),
+('ADD023', 'ACC023', '2931 Nguyễn Khắc Nhu', '5', 'Đà Lạt', 'Việt Nam'),
+('ADD024', 'ACC024', '3133 Lê Hồng Phong', '3', 'Biên Hòa', 'Việt Nam');
+INSERT INTO PurchaseOrder (OrderID, OrderDate, TotalAmount) 
+VALUES 
+('ORD007', '2023-03-15', 1500),
+('ORD008', '2023-03-16', 900),
+('ORD009', '2023-03-17', 1200),
+('ORD010', '2023-03-18', 600),
+('ORD011', '2023-03-19', 1800);
+INSERT INTO SaleOrder (OrderID, CustomerID, ExpectedDeliveryDate, TotalAmount, Address) 
+VALUES 
+('ORD012', 'ACC007', '2023-03-20', 900, 'Địa chỉ giao hàng A'),
+('ORD013', 'ACC008', '2023-03-21', 600, 'Địa chỉ giao hàng B'),
+('ORD014', 'ACC009', '2023-03-22', 1200, 'Địa chỉ giao hàng C'),
+('ORD015', 'ACC010', '2023-03-23', 300, 'Địa chỉ giao hàng D'),
+('ORD016', 'ACC011', '2023-03-24', 1500, 'Địa chỉ giao hàng E');
 
 
 -- Insert sample data into the OrderDetails table
 INSERT INTO OrderDetails (OrderDetailsID, OrderID, ProductID, Quantity) VALUES
-('ODTL001', 'ORD001', 'PRD1001', 1),
-('ODTL002', 'ORD002', 'PRD1002', 1),
-('ODTL003', 'ORD003', 'PRD1004', 2),
-('ODTL004', 'ORD004', 'PRD1005', 1);
+('ODTL010', 'ORD007', 'PRD1001', 2),
+('ODTL011', 'ORD008', 'PRD1002', 1),
+('ODTL012', 'ORD009', 'PRD1003', 2),
+('ODTL013', 'ORD010', 'PRD1004', 1),
+('ODTL014', 'ORD011', 'PRD1005', 3),
+('ODTL015', 'ORD012', 'PRD1006', 1),
+('ODTL016', 'ORD013', 'PRD1007', 1),
+('ODTL017', 'ORD014', 'PRD1008', 2),
+('ODTL018', 'ORD015', 'PRD1009', 1),
+('ODTL019', 'ORD016', 'PRD1010', 2);
 
 
 -- ...Continue with similar INSERT statements for the Television, Phone, Laptop, Refrigerator, AirConditioner, WashingMachine, RiceCooker, PurchaseOrder, and SaleOrder tables.
