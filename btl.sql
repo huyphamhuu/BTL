@@ -759,4 +759,59 @@ BEGIN
     END IF;
 END; //
 DELIMITER ;
-
+-- Function to return bestselling product by category
+CREATE OR REPLACE FUNCTION BestSellingProductByCategoryAndMonth(
+    IN p_Year INT,
+    IN p_Month INT
+)
+RETURNS TABLE
+AS
+RETURN
+    SELECT
+        p.ProductID,
+        p.ProductName,
+        p.ImageURL
+    FROM
+        Product p
+    JOIN OrderDetails od ON p.ProductID = od.ProductID
+    JOIN Orders o ON od.OrderID = o.OrderID
+    WHERE
+        YEAR(o.CreationDate) = p_Year
+        AND MONTH(o.CreationDate) = p_Month
+        AND (
+            (p.ProductID LIKE 'TLV%')
+            OR (p.ProductID LIKE 'LAP%')
+            OR (p.ProductID LIKE 'PHN%')
+            OR (p.ProductID LIKE 'FRG%')
+            OR (p.ProductID LIKE 'ACN%')
+			OR (p.ProductID LIKE 'WSH%')
+            OR (p.ProductID LIKE 'RCK%')
+        )
+    GROUP BY
+        p.ProductID,
+        p.ProductName,
+        p.ImageURL
+    ORDER BY
+        SUM(od.Quantity) DESC
+    LIMIT 1;
+--procedure to get sales revenue by product type
+CREATE OR REPLACE PROCEDURE SalesRevenueByProductType(
+    IN p_Year INT,
+    IN p_Month INT
+)
+BEGIN
+    SELECT
+        p.ProductID,
+        SUM(od.Quantity * pr.SalePrice) AS Revenue
+    FROM
+        Product p
+    JOIN OrderDetails od ON p.ProductID = od.ProductID
+    JOIN Orders so ON od.OrderID = so.OrderID
+    JOIN Product pr ON p.ProductID = pr.ProductID
+    WHERE
+        LEFT(so.OrderID, 3) = 'ORS'
+        AND YEAR(so.CreationDate) = p_Year
+        AND MONTH(so.CreationDate) = p_Month
+    GROUP BY
+        p.ProductID;
+END;
