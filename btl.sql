@@ -815,3 +815,53 @@ BEGIN
     GROUP BY
         p.ProductID;
 END;
+--Procedure to get orders count by customer
+CREATE OR REPLACE PROCEDURE OrdersCountByCustomer()
+BEGIN
+    SELECT
+        c.CustomerID,
+        c.CustomerName,
+        COUNT(o.OrderID) AS OrderCount
+    FROM
+        Customer c
+    LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
+    GROUP BY
+        c.CustomerID,
+        c.CustomerName
+    ORDER BY
+        OrderCount DESC;
+END;
+-- Function to get top 10 customers by order count
+CREATE OR ALTER FUNCTION TopCustomersByOrderCount(
+    p_Year INT,
+    p_Month INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT
+        CustomerID,
+        CustomerName,
+        OrderCount
+    FROM (
+        SELECT
+            c.CustomerID,
+            c.CustomerName,
+            COUNT(o.OrderID) AS OrderCount,
+            ROW_NUMBER() OVER (ORDER BY COUNT(o.OrderID) DESC) AS RowNum
+        FROM
+            Customer c
+        LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
+        WHERE
+            YEAR(o.CreationDate) = p_Year
+            AND MONTH(o.CreationDate) = p_Month
+        GROUP BY
+            c.CustomerID,
+            c.CustomerName
+        ORDER BY
+            OrderCount DESC
+    ) AS RankedCustomers
+    WHERE
+        RowNum <= 10
+);
