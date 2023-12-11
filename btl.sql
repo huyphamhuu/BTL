@@ -175,7 +175,6 @@ CREATE TABLE IF NOT EXISTS SaleOrder (
     CONSTRAINT fk_SaleOrder_Orders FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
     ON DELETE CASCADE,
 	CONSTRAINT fk_SaleOrder_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
-    
 );
 
 CREATE TABLE IF NOT EXISTS CustomerAddress (
@@ -281,23 +280,7 @@ CREATE TABLE IF NOT EXISTS RiceCooker (
     ON DELETE CASCADE
 );
 
--- PurchaseOrder Table
-CREATE TABLE IF NOT EXISTS PurchaseOrder (
-    PO_ID VARCHAR(10) PRIMARY KEY,
-    OrderDate DATE NOT NULL,
-    TotalPurchasePrice DECIMAL(10,2) NOT NULL,
-    ArrivalDate DATE NOT NULL,
-    CONSTRAINT chk_ArrivalDate CHECK (ArrivalDate >= OrderDate)
-);
 
--- SaleOrder Table
-CREATE TABLE IF NOT EXISTS SaleOrder (
-    SO_ID VARCHAR(10) PRIMARY KEY,
-    ExpectedDeliveryDate DATE NOT NULL,
-    DeliveryAddressID VARCHAR(10) NOT NULL,
-    TotalSalePrice DECIMAL(10,2) NOT NULL,
-    CONSTRAINT fk_SaleOrder_DeliveryAddressID FOREIGN KEY (DeliveryAddressID) REFERENCES CustomerAddress(AddressID)
-);
 -- Insert sample data into the Product table
 -- Insert additional Phones into the Product and Phone tables
 
@@ -440,9 +423,6 @@ INSERT INTO Television (ProductID, ImageTech, SoundTech, ConnectivityTech) VALUE
 ('TLV003', 'Ultra HD', 'Surround Sound', 'HDMI, USB, Wi-Fi, Bluetooth'),
 ('TLV004', '4K OLED', 'Dolby Atmos', 'HDMI, USB, Wi-Fi, Bluetooth, Ethernet'),
 ('TLV005', 'HD', 'Stereo', 'HDMI, USB');
-
-
-
 INSERT INTO Phone ( ProductID, CPU, Memory, TouchScreen, BatteryLife, ConnectivitySupport, CameraSpecs) VALUES
 ('PHN001', 'Octa-Core', 128, 'Capacitive', '24 hours', '5G, WiFi 6, Bluetooth 5.2', '12MP Ultra-wide, 48MP Main'),
 ('PHN002', 'Quad-Core', 64, 'Capacitive', '36 hours', '4G, WiFi 5, Bluetooth 5.0', '8MP Wide, 24MP Main'),
