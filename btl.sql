@@ -769,8 +769,6 @@ BEGIN
     WHERE p.ProductID = NEW.ProductID;
 END; //
 DELIMITER ;
-
--- Trigger for updating TotalAmount on PurchaseOrder insert, update, delete
 DELIMITER //
 CREATE TRIGGER UpdatePurchaseOrderTotalPrice AFTER INSERT ON OrderDetails
 FOR EACH ROW
@@ -789,8 +787,6 @@ BEGIN
     END IF;
 END; //
 DELIMITER ;
-
--- Trigger for updating TotalAmount on SaleOrder insert, update, delete
 DELIMITER //
 CREATE TRIGGER UpdateSaleOrderTotalPrice AFTER INSERT ON OrderDetails
 FOR EACH ROW
@@ -809,45 +805,11 @@ BEGIN
     END IF;
 END; //
 DELIMITER ;
--- Function to return bestselling product by category
-CREATE OR REPLACE FUNCTION BestSellingProductByCategoryAndMonth(
-    IN p_Year INT,
-    IN p_Month INT
-)
-RETURNS TABLE
-AS
-RETURN
-    SELECT
-        p.ProductID,
-        p.ProductName,
-        p.ImageURL
-    FROM
-        Product p
-    JOIN OrderDetails od ON p.ProductID = od.ProductID
-    JOIN Orders o ON od.OrderID = o.OrderID
-    WHERE
-        YEAR(o.CreationDate) = p_Year
-        AND MONTH(o.CreationDate) = p_Month
-        AND (
-            (p.ProductID LIKE 'TLV%')
-            OR (p.ProductID LIKE 'LAP%')
-            OR (p.ProductID LIKE 'PHN%')
-            OR (p.ProductID LIKE 'FRG%')
-            OR (p.ProductID LIKE 'ACN%')
-			OR (p.ProductID LIKE 'WSH%')
-            OR (p.ProductID LIKE 'RCK%')
-        )
-    GROUP BY
-        p.ProductID,
-        p.ProductName,
-        p.ImageURL
-    ORDER BY
-        SUM(od.Quantity) DESC
-    LIMIT 1;
---procedure to get sales revenue by product type
-CREATE OR REPLACE PROCEDURE SalesRevenueByProductType(
-    IN p_Year INT,
-    IN p_Month INT
+
+DELIMITER //
+CREATE PROCEDURE SalesRevenueByProductType(
+     p_Year INT,
+     p_Month INT
 )
 BEGIN
     SELECT
@@ -864,58 +826,140 @@ BEGIN
         AND MONTH(so.CreationDate) = p_Month
     GROUP BY
         p.ProductID;
-END;
---Procedure to get orders count by customer
-CREATE OR REPLACE PROCEDURE OrdersCountByCustomer()
-BEGIN
-    SELECT
-        c.CustomerID,
-        c.CustomerName,
-        COUNT(o.OrderID) AS OrderCount
-    FROM
-        Customer c
-    LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
-    GROUP BY
-        c.CustomerID,
-        c.CustomerName
-    ORDER BY
-        OrderCount DESC;
-END;
--- Function to get top 10 customers by order count
-CREATE OR ALTER FUNCTION TopCustomersByOrderCount(
-    p_Year INT,
-    p_Month INT
-)
-RETURNS TABLE
-AS
-RETURN
-(
-    SELECT
-        CustomerID,
-        CustomerName,
-        OrderCount
-    FROM (
-        SELECT
-            c.CustomerID,
-            c.CustomerName,
-            COUNT(o.OrderID) AS OrderCount,
-            ROW_NUMBER() OVER (ORDER BY COUNT(o.OrderID) DESC) AS RowNum
-        FROM
-            Customer c
-        LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
-        WHERE
-            YEAR(o.CreationDate) = p_Year
-            AND MONTH(o.CreationDate) = p_Month
-        GROUP BY
-            c.CustomerID,
-            c.CustomerName
-        ORDER BY
-            OrderCount DESC
-    ) AS RankedCustomers
-    WHERE
-        RowNum <= 10
-);
+END; //
+DELIMITER ;
+-- Chạy stored procedure
+CALL SalesRevenueByProductType(2023, 3);
 
+DELIMITER //
+CREATE PROCEDURE BestSellingProductsByCategoryAndMonth(
+    IN p_Year INT,
+    IN p_Month INT
+)
+BEGIN
+    -- Temporary table to store results
+    CREATE TEMPORARY TABLE IF NOT EXISTS TempBestSellingProducts (
+        ProductID VARCHAR(10),
+        ProductName VARCHAR(255),
+        ImageURL VARCHAR(255),
+        TotalQuantitySold INT,
+        RowNumber INT,
+        PRIMARY KEY (ProductID)
+    );
+
+    -- Insert data into the temporary table
+    INSERT INTO TempBestSellingProducts (ProductID, ProductName, ImageURL, TotalQuantitySold, RowNumber)
+    SELECT
+        p.ProductID,
+        p.ProductName,
+        p.ImageURL,
+        SUM(od.Quantity) AS TotalQuantitySold,
+        ROW_NUMBER() OVER (PARTITION BY LEFT(p.ProductID, 3) ORDER BY SUM(od.Quantity) DESC) AS RowNumber
+    FROM
+        Product p
+    JOIN
+        OrderDetails od ON p.ProductID = od.ProductID
+    JOIN
+        Orders o ON od.OrderID = o.OrderID
+    WHERE
+        LEFT(o.OrderID, 3) = 'ORS'
+        AND YEAR(o.CreationDate) = p_Year
+        AND MONTH(o.CreationDate) = p_Month
+        AND (
+            (p.ProductID LIKE 'TLV%')
+                OR (p.ProductID LIKE 'LAP%')
+                OR (p.ProductID LIKE 'PHN%')
+                OR (p.ProductID LIKE 'FRG%')
+                OR (p.ProductID LIKE 'ACN%')
+                OR (p.ProductID LIKE 'WSH%')
+                OR (p.ProductID LIKE 'RCK%')
+        )
+    GROUP BY
+        p.ProductID,
+        p.ProductName,
+        p.ImageURL;
+
+    -- Display the results
+    SELECT ProductID, ProductName,ImageURL
+    FROM TempBestSellingProducts WHERE RowNumber = 1;
+
+    -- Drop the temporary table
+    DROP TEMPORARY TABLE IF EXISTS TempBestSellingProducts;
+END //
+
+DELIMITER ;
+-- Call the procedure
+DROP PROCEDURE BestSellingProductsByCategoryAndMonth;
+CALL BestSellingProductsByCategoryAndMonth(2023, 3);
+DELIMITER //
+
+-- Function return number of orders of a customer in a month
+DELIMITER //
+CREATE FUNCTION OrdersCountByCustomerInMonth(
+    p_Year INT,
+    p_Month INT,
+    p_CustomerID VARCHAR(10)
+)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE orderCount INT;
+    
+    SELECT COUNT(o.OrderID) INTO orderCount
+    FROM SaleOrder o
+    WHERE YEAR(o.ExpectedDeliveryDate) = p_Year
+        AND MONTH(o.ExpectedDeliveryDate) = p_Month
+        AND o.CustomerID = p_CustomerID;
+    
+    RETURN orderCount;
+END //
+DELIMITER ;
+
+
+-- Example usage of the function
+SELECT 
+    CustomerID,
+    OrdersCountByCustomerInMonth(2023, 3, CustomerID) AS OrderCount
+FROM 
+    Customer;
+    
+    
+DELIMITER //
+CREATE FUNCTION GetCustomerLevel(
+    p_CustomerID VARCHAR(10)
+)
+RETURNS VARCHAR(10)
+DETERMINISTIC
+BEGIN
+    DECLARE totalAmountSpent DECIMAL(10, 2);
+    DECLARE customerLevel VARCHAR(10);
+
+    -- Calculate the total amount spent by the customer
+    SELECT COALESCE(SUM(o.TotalAmount), 0) INTO totalAmountSpent
+    FROM SaleOrder o
+    WHERE o.CustomerID = p_CustomerID;
+
+    -- Determine the customer level
+    IF totalAmountSpent >= 15000 THEN
+        SET customerLevel = 'Platinum';
+    ELSEIF totalAmountSpent >= 7000 THEN
+        SET customerLevel = 'Gold';
+    ELSEIF totalAmountSpent >= 1000 THEN
+        SET customerLevel = 'Silver';
+    ELSE
+        SET customerLevel = 'Bronze';
+    END IF;
+
+    RETURN customerLevel;
+END ;//
+DELIMITER ;
+DROP FUNCTION GetCustomerLevel;
+
+SELECT 
+    CustomerID,
+    GetCustomerLevel(CustomerID) AS CustomerLevel
+FROM 
+    Customer;
 
 
 
