@@ -782,6 +782,19 @@ INSERT INTO OrderDetails (OrderDetailsID, OrderID, ProductID, Quantity) VALUES
 ('ODTL050', 'ORS029', 'RCK003', 2);
 
 DELIMITER //
+CREATE TRIGGER CheckSalePriceBeforeUpdate
+BEFORE UPDATE ON Product
+FOR EACH ROW
+BEGIN
+    IF NEW.SalePrice < NEW.EntryPrice THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Sale Price must be greater than or equal to Entry Price';
+    END IF;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
 CREATE TRIGGER UpdateStockOnOrderDetailsInsert AFTER INSERT ON OrderDetails
 FOR EACH ROW
 BEGIN
