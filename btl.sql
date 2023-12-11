@@ -613,6 +613,16 @@ INSERT INTO Account (AccountID, Username, Password, Email, PhoneNumber, FirstNam
 ('ACS002', 'tranvanlam', 'passwor123!', 'tranvanlam@example.com', '0987654322', 'Trần', 'Văn Lâm', 32),
 ('ACS003', 'lethibichnga', 'securePass456!', 'lethibichnga@example.com', '0987654323', 'Lê', 'Thị Bích Ngà', 26),
 ('ACS004', 'phamthanhhoa', 'mySecurePass789!', 'phamthanhhoa@example.com', '0987654324', 'Phạm', 'Thanh Hoa', 29),
+('ACS005', 'lequanghien', 'LeQuangHien123', 'lequanghien@example.com', '0987654325', 'Lê', 'Quang Hiển', 20),
+('ACS006', 'caoducduong', 'CaoDucDuong123', 'caoducduong@example.com', '0987654326', 'Cao', 'Đức Dương', 20),
+('ACS007', 'nguyenvanhoangkhang', 'NguyenHoangKhang123', 'nguyenvanhoangkhang@example.com', '0987654327', 'Nguyễn', 'Văn Hoàng Khang', 20),
+('ACS008', 'nguyenminhthu', 'NguyenMinhThu123', 'nguyenminhthu@example.com', '0987654328', 'Nguyễn', 'Minh Thư', 30),
+('ACS009', 'tranthikimlien', 'TranThiKimLien123', 'tranthikimlien@example.com', '0987654329', 'Trần', 'Thị Kim Liên', 28),
+('ACS010', 'dangthanhthao', 'DangThanhThao123', 'dangthanhthao@example.com', '0987654330', 'Đặng', 'Thanh Thảo', 31),
+('ACS011', 'hoangthikimanh', 'HoangThiKimAnh123', 'hoangthikimanh@example.com', '0987654331', 'Hoàng', 'Thị Kim Anh', 25),
+('ACS012', 'phamvanhuy', 'PhamVanHuy123', 'phamvanhuy@example.com', '0987654332', 'Phạm', 'Văn Huy', 32),
+('ACS013', 'lethithanh', 'LeThiThanh123', 'lethithanh@example.com', '0987654333', 'Lê', 'Thị Thanh', 27),
+('ACS014', 'nguyenthithuy', 'NguyenThiThuy123', 'nguyenthithuy@example.com', '0987654334', 'Nguyễn', 'Thị Thủy', 29),
 ('ACC005', 'ngocanh92', 'NgocAnh@92', 'ngocanh92@example.com', '0987123455', 'Ngọc', 'Anh', 29),
 ('ACC006', 'minhthu1988', 'ThuMinh!1988', 'minhthu1988@example.com', '0987234566', 'Minh', 'Thư', 33),
 ('ACC007', 'hoangtuan91', 'TuanHoang1991*', 'hoangtuan91@example.com', '0987345677', 'Hoàng', 'Tuấn', 30),
@@ -661,7 +671,18 @@ INSERT INTO Employee (EmployeeID, StartDate, Status, SuperiorID) VALUES
 ('ACS001', '2021-01-01', 'Active', NULL),
 ('ACS002', '2021-01-02', 'Active', 'ACS001'),
 ('ACS003', '2021-01-03', 'Active', 'ACS001'),
-('ACS004', '2021-01-04', 'Active', 'ACS002');
+('ACS004', '2021-01-04', 'Active', 'ACS002'),
+('ACS005', '2023-01-05', 'Active', 'ACS001'),
+('ACS006', '2023-01-06', 'Tạm nghỉ', 'ACS001'),
+('ACS007', '2023-01-07', 'Active', 'ACS002'),
+('ACS008', '2023-01-08', 'Tạm nghỉ', 'ACS002'),
+('ACS009', '2023-01-09', 'Active', 'ACS003'),
+('ACS010', '2023-01-10', 'Active', 'ACS003'),
+('ACS011', '2023-01-11', 'Tạm nghỉ', 'ACS004'),
+('ACS012', '2023-01-12', 'Active', 'ACS004'),
+('ACS013', '2023-01-13', 'Active', 'ACS005'),
+('ACS014', '2023-01-14', 'Tạm nghỉ', 'ACS005');
+
 
 -- Insert sample data into the Orders table
 INSERT INTO Orders (OrderID,  CreationDate, Status, Note,  EmployeeID) VALUES
@@ -780,20 +801,6 @@ INSERT INTO OrderDetails (OrderDetailsID, OrderID, ProductID, Quantity) VALUES
 ('ODTL048', 'ORS028', 'RCK005', 1),
 ('ODTL049', 'ORS029', 'RCK002', 1),
 ('ODTL050', 'ORS029', 'RCK003', 2);
-
-DELIMITER //
-CREATE TRIGGER CheckSalePriceBeforeUpdate
-BEFORE UPDATE ON Product
-FOR EACH ROW
-BEGIN
-    IF NEW.SalePrice < NEW.EntryPrice THEN
-        SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Sale Price must be greater than or equal to Entry Price';
-    END IF;
-END;
-//
-DELIMITER ;
-
 DELIMITER //
 CREATE TRIGGER UpdateStockOnOrderDetailsInsert AFTER INSERT ON OrderDetails
 FOR EACH ROW
