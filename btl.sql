@@ -673,15 +673,15 @@ INSERT INTO Employee (EmployeeID, StartDate, Status, SuperiorID) VALUES
 ('ACS003', '2021-01-03', 'Active', 'ACS001'),
 ('ACS004', '2021-01-04', 'Active', 'ACS002'),
 ('ACS005', '2023-01-05', 'Active', 'ACS001'),
-('ACS006', '2023-01-06', 'Tạm nghỉ', 'ACS001'),
+('ACS006', '2023-01-06', 'Inactive', 'ACS001'),
 ('ACS007', '2023-01-07', 'Active', 'ACS002'),
-('ACS008', '2023-01-08', 'Tạm nghỉ', 'ACS002'),
+('ACS008', '2023-01-08', 'Inactive', 'ACS002'),
 ('ACS009', '2023-01-09', 'Active', 'ACS003'),
 ('ACS010', '2023-01-10', 'Active', 'ACS003'),
-('ACS011', '2023-01-11', 'Tạm nghỉ', 'ACS004'),
+('ACS011', '2023-01-11', 'Inactive', 'ACS004'),
 ('ACS012', '2023-01-12', 'Active', 'ACS004'),
 ('ACS013', '2023-01-13', 'Active', 'ACS005'),
-('ACS014', '2023-01-14', 'Tạm nghỉ', 'ACS005');
+('ACS014', '2023-01-14', 'Inactive', 'ACS005');
 
 
 -- Insert sample data into the Orders table
