@@ -147,7 +147,6 @@ CREATE TABLE IF NOT EXISTS Orders (
     CreationDate DATE NOT NULL,
     Status VARCHAR(255) NOT NULL,
     Note TEXT NOT NULL,
-    ProductQuantity INT NOT NULL,
     EmployeeID VARCHAR(10) NOT NULL,
     CONSTRAINT fk_EmployeeID FOREIGN KEY (EmployeeID) REFERENCES Account(AccountID),
     CONSTRAINT fk_Orders_EmployeeID FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID)
@@ -665,17 +664,31 @@ INSERT INTO Employee (EmployeeID, StartDate, Status, SuperiorID) VALUES
 ('ACS004', '2021-01-04', 'Active', 'ACS002');
 
 -- Insert sample data into the Orders table
-INSERT INTO Orders (OrderID,  CreationDate, Status, Note, ProductQuantity, EmployeeID) VALUES
-('ORP007', '2023-03-15', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 5, 'ACS001'),
-('ORP008', '2023-03-16', 'Đang xử lý', 'Nhập hàng từ nhà cung cấp', 3, 'ACS002'),
-('ORP009', '2023-03-17', 'Đang vận chuyển', 'Nhập hàng từ nhà cung cấp', 4, 'ACS003'),
-('ORP010', '2023-03-18', 'Chờ xác nhận', 'Nhập hàng từ nhà cung cấp', 2, 'ACS004'),
-('ORP011', '2023-03-19', 'Đã nhận', 'Nhập hàng từ nhà cung cấp', 6, 'ACS001'),
-('ORS012', '2023-03-15', 'Đang xử lý', 'Đơn hàng bán ra', 3, 'ACS002'),
-('ORS013', '2023-03-16', 'Đã giao', 'Đơn hàng bán ra', 2, 'ACS003'),
-('ORS014', '2023-03-17', 'Đang vận chuyển', 'Đơn hàng bán ra', 4, 'ACS004'),
-('ORS015', '2023-03-18', 'Chờ xác nhận', 'Đơn hàng bán ra', 1, 'ACS001'),
-('ORS016', '2023-03-19', 'Đang xử lý', 'Đơn hàng bán ra', 5, 'ACS002');
+INSERT INTO Orders (OrderID,  CreationDate, Status, Note,  EmployeeID) VALUES
+('ORP007', '2023-03-15', 'Đã nhận', 'Nhập hàng từ nhà cung cấp',  'ACS001'),
+('ORP008', '2023-03-16', 'Đang xử lý', 'Nhập hàng từ nhà cung cấp',  'ACS002'),
+('ORP009', '2023-03-17', 'Đang vận chuyển', 'Nhập hàng từ nhà cung cấp',  'ACS003'),
+('ORP010', '2023-03-18', 'Chờ xác nhận', 'Nhập hàng từ nhà cung cấp',  'ACS004'),
+('ORP011', '2023-03-19', 'Đã nhận', 'Nhập hàng từ nhà cung cấp',  'ACS001'),
+('ORS012', '2023-03-15', 'Đang xử lý', 'Đơn hàng bán ra',  'ACS002'),
+('ORS013', '2023-03-16', 'Đã giao', 'Đơn hàng bán ra',  'ACS003'),
+('ORS014', '2023-03-17', 'Đang vận chuyển', 'Đơn hàng bán ra',  'ACS004'),
+('ORS015', '2023-03-18', 'Chờ xác nhận', 'Đơn hàng bán ra',  'ACS001'),
+('ORS016', '2023-03-19', 'Đang xử lý', 'Đơn hàng bán ra',  'ACS002'),
+('ORS017', '2023-03-25', 'Đã nhận', 'Đơn hàng bán ra',  'ACS002'),
+('ORS018', '2023-03-26', 'Chờ xác nhận', 'Đơn hàng bán ra',  'ACS003'),
+('ORS019', '2023-03-27', 'Đang xử lý', 'Đơn hàng bán ra',  'ACS004'),
+('ORS020', '2023-04-01', 'Chờ xác nhận', 'Đơn hàng bán ra',  'ACS001'),
+('ORS021', '2023-04-02', 'Đang xử lý', 'Đơn hàng bán ra',  'ACS002'),
+('ORS022', '2023-04-03', 'Đang vận chuyển', 'Đơn hàng bán ra',  'ACS003'),
+('ORS023', '2023-04-04', 'Đã giao', 'Đơn hàng bán ra', 'ACS004'),
+('ORS024', '2023-04-05', 'Chờ xác nhận', 'Đơn hàng bán ra',  'ACS001'),
+('ORS025', '2023-03-25', 'Đã giao', 'Đơn hàng bán ra',  'ACS004'),
+('ORS026', '2023-03-26', 'Đang xử lý', 'Đơn hàng bán ra',  'ACS001'),
+('ORS027', '2023-03-27', 'Đang vận chuyển', 'Đơn hàng bán ra',  'ACS002'),
+('ORS028', '2023-03-28', 'Chờ xác nhận', 'Đơn hàng bán ra',  'ACS003'),
+('ORS029', '2023-03-29', 'Đã giao', 'Đơn hàng bán ra',  'ACS004');
+
 
 -- Insert sample data into the CustomerAddress table
 INSERT INTO CustomerAddress (AddressID, CustomerID, Street, District, City, State) VALUES
@@ -708,11 +721,25 @@ VALUES
 ('ORP011', '2023-03-19', 1800);
 INSERT INTO SaleOrder (OrderID, CustomerID, ExpectedDeliveryDate, TotalAmount, Address) 
 VALUES 
-('ORS012', 'ACC007', '2023-03-20', 900, 'Địa chỉ giao hàng A'),
-('ORS013', 'ACC008', '2023-03-21', 600, 'Địa chỉ giao hàng B'),
-('ORS014', 'ACC009', '2023-03-22', 1200, 'Địa chỉ giao hàng C'),
-('ORS015', 'ACC010', '2023-03-23', 300, 'Địa chỉ giao hàng D'),
-('ORS016', 'ACC011', '2023-03-24', 1500, 'Địa chỉ giao hàng E');
+('ORS012', 'ACC007', '2023-03-20', 800, 'Địa chỉ giao hàng A'),
+('ORS013', 'ACC008', '2023-03-21', 500, 'Địa chỉ giao hàng B'),
+('ORS014', 'ACC009', '2023-03-22', 1800, 'Địa chỉ giao hàng C'),
+('ORS015', 'ACC010', '2023-03-23', 700, 'Địa chỉ giao hàng D'),
+('ORS016', 'ACC011', '2023-03-24', 1500, 'Địa chỉ giao hàng E'),
+('ORS017', 'ACC007', '2023-03-25', 1400, 'Địa chỉ giao hàng F'),
+('ORS018', 'ACC007', '2023-03-26', 750, 'Địa chỉ giao hàng G'),
+('ORS019', 'ACC007', '2023-03-27',  1800, 'Địa chỉ giao hàng H'),
+('ORS020', 'ACC007', '2023-04-01', 1250, 'Địa chỉ giao hàng I'),
+('ORS021', 'ACC007', '2023-04-02', 3450, 'Địa chỉ giao hàng J'),
+('ORS022', 'ACC007', '2023-04-03', 2500, 'Địa chỉ giao hàng K'),
+('ORS023', 'ACC007', '2023-04-04', 1320, 'Địa chỉ giao hàng L'),
+('ORS024', 'ACC007', '2023-04-05', 800, 'Địa chỉ giao hàng M'),
+('ORS025', 'ACC007', '2023-03-25', 1850, 'Địa chỉ giao hàng N'),
+('ORS026', 'ACC007', '2023-03-26', 2600, 'Địa chỉ giao hàng O'),
+('ORS027', 'ACC007', '2023-03-27', 1150, 'Địa chỉ giao hàng P'),
+('ORS028', 'ACC007', '2023-03-28', 1600, 'Địa chỉ giao hàng Q'),
+('ORS029', 'ACC007', '2023-03-29', 620, 'Địa chỉ giao hàng R');
+
 
 
 -- Insert sample data into the OrderDetails table
@@ -722,20 +749,38 @@ INSERT INTO OrderDetails (OrderDetailsID, OrderID, ProductID, Quantity) VALUES
 ('ODTL012', 'ORP009', 'PHN003', 2),
 ('ODTL013', 'ORP010', 'PHN004', 1),
 ('ODTL014', 'ORP011', 'PHN005', 3),
--- Laptops
 ('ODTL015', 'ORS012', 'LAP001', 1),
 ('ODTL016', 'ORS013', 'LAP002', 1),
 ('ODTL017', 'ORS014', 'LAP003', 2),
 ('ODTL018', 'ORS015', 'LAP004', 1),
-('ODTL019', 'ORS016', 'LAP005', 2);
+('ODTL019', 'ORS016', 'LAP005', 2),
+('ODTL025', 'ORS017', 'PHN001', 2),
+('ODTL026', 'ORS017', 'LAP001', 1),
+('ODTL027', 'ORS018', 'PHN002', 1),
+('ODTL028', 'ORS018', 'LAP002', 1),
+('ODTL029', 'ORS019', 'PHN003', 2),
+('ODTL030', 'ORS019', 'LAP003', 1),
+('ODTL031', 'ORS020', 'PHN004', 1),
+('ODTL032', 'ORS020', 'LAP004', 1),
+('ODTL033', 'ORS021', 'PHN005', 3),
+('ODTL034', 'ORS021', 'LAP005', 2),
+('ODTL035', 'ORS022', 'ACN001', 1),
+('ODTL036', 'ORS022', 'FRG001', 2),
+('ODTL037', 'ORS023', 'WSH001', 2),
+('ODTL038', 'ORS023', 'RCK001', 1),
+('ODTL039', 'ORS024', 'PHN001', 1),
+('ODTL040', 'ORS024', 'WSH002', 1),
+('ODTL041', 'ORS025', 'ACN003', 2),
+('ODTL042', 'ORS025', 'PHN004', 1),
+('ODTL043', 'ORS026', 'FRG005', 3),
+('ODTL044', 'ORS026', 'ACN001', 1),
+('ODTL045', 'ORS027', 'PHN002', 1),
+('ODTL046', 'ORS027', 'LAP003', 1),
+('ODTL047', 'ORS028', 'WSH004', 2),
+('ODTL048', 'ORS028', 'RCK005', 1),
+('ODTL049', 'ORS029', 'RCK002', 1),
+('ODTL050', 'ORS029', 'RCK003', 2);
 
-
--- ...Continue with similar INSERT statements for the Television, Phone, Laptop, Refrigerator, AirConditioner, WashingMachine, RiceCooker, PurchaseOrder, and SaleOrder tables.
--- ...Continue with similar INSERT statements for the Television, Phone, Laptop, Refrigerator, AirConditioner, WashingMachine, RiceCooker, PurchaseOrder, and SaleOrder tables.
-
--- Trigger for updating stock on OrderDetails insert
-
--- Trigger for updating stock on OrderDetails insert
 DELIMITER //
 CREATE TRIGGER UpdateStockOnOrderDetailsInsert AFTER INSERT ON OrderDetails
 FOR EACH ROW
@@ -889,7 +934,7 @@ END //
 
 DELIMITER ;
 -- Call the procedure
-DROP PROCEDURE BestSellingProductsByCategoryAndMonth;
+-- DROP PROCEDURE BestSellingProductsByCategoryAndMonth;
 CALL BestSellingProductsByCategoryAndMonth(2023, 3);
 DELIMITER //
 
@@ -960,6 +1005,5 @@ SELECT
     GetCustomerLevel(CustomerID) AS CustomerLevel
 FROM 
     Customer;
-
 
 
